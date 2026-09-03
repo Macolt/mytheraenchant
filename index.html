@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mythera Enchantment Simulator</title>
+<style>
+:root{--bg:#090b10;--panel:#11151d;--panel2:#171c26;--line:#2b3443;--text:#e9edf5;--muted:#8f9aaa;--accent:#e34b4b;--good:#55d18a;--gold:#e6bd61;--coin:#d7dbe4}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -10%,#202735 0,#0b0e14 48%,#07090d 100%);color:var(--text);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;min-height:100vh}
+.wrap{max-width:1280px;margin:0 auto;padding:26px 18px 50px}.title{text-align:center;margin-bottom:20px}.title h1{margin:0;font-size:30px;letter-spacing:.5px}.title p{color:var(--muted);margin:7px 0 0}
+.toolbar{display:flex;justify-content:center;align-items:center;gap:12px;margin-bottom:18px}.lang-wrap{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px}.lang-wrap select{background:#11151d;color:var(--text);border:1px solid var(--line);border-radius:7px;padding:10px 32px 10px 10px;font-weight:700}.select-wrap{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px}.select-wrap select{background:#11151d;color:var(--text);border:1px solid var(--line);border-radius:7px;padding:10px 38px 10px 12px;font-weight:700;min-width:230px}
+.grid{display:grid;grid-template-columns:330px minmax(420px,1fr) 285px;gap:16px;align-items:start}.card{background:linear-gradient(180deg,#141923,#0f131b);border:1px solid var(--line);border-radius:10px;box-shadow:0 14px 40px #0008}.item{padding:20px;display:flex;flex-direction:column;align-items:center}.orb{width:170px;height:170px;border-radius:50%;margin:8px 0 17px;background:radial-gradient(circle,#354155 0,#1d2533 42%,#0d1118 70%);border:1px solid #46536a;display:grid;place-items:center;box-shadow:inset 0 0 35px #000,0 0 35px #0008;overflow:hidden}.orb img{width:115px;height:115px;object-fit:contain;image-rendering:auto;filter:drop-shadow(0 4px 8px #000)}.item h2{margin:0;font-size:23px;text-align:center}.subtitle{color:var(--muted);font-size:13px;margin-top:5px;text-align:center}.slots{display:flex;gap:6px;margin-top:12px}.slot{width:10px;height:10px;border-radius:50%;background:#303948;border:1px solid #4b5669}.slot.filled{background:var(--good);border-color:#77e7a4;box-shadow:0 0 7px #55d18a55}.attrs{width:100%;margin-top:18px}.attr{display:flex;justify-content:space-between;align-items:center;padding:9px 11px;background:#0c1016;border:1px solid #202837;border-radius:7px;margin-top:7px;font-size:13px}.attr small{color:var(--muted)}.empty{color:#596475;font-style:italic}
+.possible-box{width:100%;margin-top:22px;border-top:1px solid var(--line);padding-top:16px}.possible-box h3{font-size:13px;color:var(--muted);margin:0 0 10px;text-align:center}.p-attr{background:#0c1016;border:1px solid #202837;border-radius:6px;padding:7px 9px;margin-bottom:6px;font-size:12px;display:flex;justify-content:space-between;align-items:center}.p-attr-name{font-weight:700;color:var(--text)}.p-attr-vals{color:var(--muted);font-size:11px}
+.controls{padding:18px;display:flex;flex-direction:column}.topline{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}.topline h2,.side h2{margin:0;font-size:18px}.stones{font-weight:800;color:var(--gold);background:#0b0e14;border:1px solid #343b49;padding:7px 11px;border-radius:7px}.result{min-height:150px;border:1px dashed #394456;border-radius:9px;background:#0b0e13;display:grid;place-items:center;text-align:center;padding:16px;margin-bottom:12px}.result .big{font-size:23px;font-weight:800}.result .detail{color:var(--muted);margin-top:6px;line-height:1.45}.result.fail .big{color:#d0d5df}.result.success .big{color:var(--good)}.buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}.btn{border:0;border-radius:7px;padding:12px 14px;font-weight:800;cursor:pointer;color:white;background:#242c3a}.btn:hover{filter:brightness(1.12)}.btn.enchant{background:#9f3030}.btn.share{grid-column:1/-1;background:#2b5278;margin-bottom:15px}.btn:disabled{opacity:.45;cursor:not-allowed}
+.history{display:flex;flex-direction:column;flex-grow:1}.history h3{font-size:13px;color:var(--muted);margin:0 0 7px}.hist{flex-grow:1;max-height:none;min-height:220px;overflow-y:auto;background:#0c1016;border:1px solid #202837;border-radius:7px;padding:4px}
+.row{display:flex;justify-content:space-between;gap:10px;padding:8px 9px;border-bottom:1px solid #202735;font-size:12px}.row:last-child{border-bottom:none}.row span:last-child{color:#7f8a9b;white-space:nowrap}.row.fail-row span:first-child{color:#aeb6c4}
+.side{padding:18px}.cost-box{margin-top:12px;border:1px solid #202837;border-radius:8px;background:#0c1016;overflow:hidden}.cost-row{display:grid;grid-template-columns:32px 1fr auto;align-items:center;gap:8px;padding:7px 8px;border-bottom:1px solid #202837;font-size:13px}.cost-row:first-child{border-radius:7px 7px 0 0}.cost-row:last-child{border-bottom:0;border-radius:0 0 7px 7px}.cost-icon{width:28px;height:28px;object-fit:contain}.cost-row .label{color:var(--muted)}.cost-row strong{font-size:15px}.gold-value{color:var(--gold)}.coin-value{color:#d6dbe5}.ores{margin-top:18px}.ores h3{font-size:13px;color:var(--muted);margin:0 0 8px}.ore-row{display:grid;grid-template-columns:32px 1fr auto;align-items:center;gap:8px;padding:7px 8px;background:#0c1016;border:1px solid #202837;border-bottom:0;font-size:12px}.ore-row:first-of-type{border-radius:7px 7px 0 0}.ore-row:last-child{border-bottom:1px solid #202837;border-radius:0 0 7px 7px}.ore-icon{width:28px;height:28px;object-fit:contain}.ore-name{color:var(--text)}.ore-coins{color:var(--gold);font-weight:800}.stats{margin-top:18px}.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}.stat{background:#0c1016;border:1px solid #202837;border-radius:7px;padding:9px}.stat small{display:block;color:var(--muted);font-size:10px}.stat strong{font-size:15px}.support-box{margin-top:18px;background:#0c1016;border:1px solid #202837;border-radius:8px;padding:11px}.support-box h3{font-size:13px;color:var(--muted);margin:0 0 8px}.support-item{font-size:12px;margin-bottom:6px;color:var(--text);line-height:1.4}.support-item:last-child{margin-bottom:0}.support-item b{color:var(--gold)}
+@media(max-width:1050px){.grid{grid-template-columns:300px 1fr}.side{grid-column:1/-1}.stats-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:850px){.toolbar{flex-wrap:wrap;}}
+@media(max-width:720px){.grid{grid-template-columns:1fr}.side{grid-column:auto}.toolbar{justify-content:stretch}.select-wrap{width:100%;flex-direction:column;align-items:stretch}.select-wrap select{width:100%}.buttons{grid-template-columns:1fr}.stats-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <div class="title"><h1>⚒ Mythera Enchantment Simulator</h1><p data-i18n="subtitle">Simulador de atributos para itens • Desenvolvido por <b>Macolt</b></p></div>
+ <div class="toolbar">
+  <label class="select-wrap"><span data-i18n="typeLabel">Tipo</span> <select id="typeSelect"></select></label>
+  <label class="select-wrap"><span data-i18n="itemLabel">Item</span> <select id="itemSelect"></select></label>
+  <label class="lang-wrap"><span data-i18n="languageLabel">Idioma</span>
+   <select id="languageSelect" aria-label="Language">
+    <option value="pt-BR">🇧🇷 Português (BR)</option>
+    <option value="en">🇺🇸 English</option>
+    <option value="pl">🇵🇱 Polski</option>
+   </select>
+  </label>
+ </div>
+ <div class="grid">
+  <section class="card item">
+   <div class="orb"><img id="itemImage" src="assets/item-placeholder.svg" alt="Item"></div>
+   <h2 id="itemName">Item</h2><div class="subtitle" id="itemSubtitle"></div>
+   <div class="slots" id="slots"></div>
+   <div class="attrs" id="attrs"></div>
+   
+   <div class="possible-box">
+     <h3 data-i18n="possibleAttrsTitle">Atributos Possíveis</h3>
+     <div id="possibleList"></div>
+   </div>
+  </section>
+  <section class="card controls">
+   <div class="topline"><h2 data-i18n="enchantment">Encantamento</h2><div class="stones"><span data-i18n="stones">Pedras</span>: <span id="stones">0</span></div></div>
+   <div class="result" id="result"><div><div class="big" data-i18n="ready">Pronto para encantar</div><div class="detail" data-i18n="eachAttempt">Cada tentativa consome 1 pedra.</div></div></div>
+   <div class="buttons">
+    <button class="btn enchant" id="enchant" data-i18n="enchant">ENCANTAR</button>
+    <button class="btn" id="reset" data-i18n="reset">LIMPAR / RESET</button>
+    <button class="btn share" id="shareBtn" data-i18n="shareBtn">📋 COMPARTILHAR ITEM</button>
+   </div>
+   <div class="history"><h3 data-i18n="history">Histórico</h3><div class="hist" id="history"></div></div>
+  </section>
+  <aside class="card side">
+   <h2 data-i18n="costs">Custos</h2>
+   <div class="cost-box">
+    <div class="cost-row">
+     <img class="cost-icon" src="assets/stone.gif" alt="Stones">
+     <span class="label" data-i18n="stonesSpent">Pedras gastas</span>
+     <strong id="costStones">0</strong>
+    </div>
+    <div class="cost-row">
+     <img class="cost-icon" src="assets/goldcoin.gif" alt="Gold">
+     <span class="label" data-i18n="gold">Ouro</span>
+     <strong class="gold-value" id="goldCost">0</strong>
+    </div>
+    <div class="cost-row">
+     <img class="cost-icon" src="assets/dwarfcoin.gif" alt="Dwarf Coins">
+     <span class="label">Dwarf Coins (DC)</span>
+     <strong class="coin-value" id="coinCost">0</strong>
+    </div>
+   </div>
+   <div class="ores"><h3 data-i18n="ores">Barras de minério</h3><div id="ores"></div></div>
+   <div class="stats"><h3 data-i18n="stats">Estatísticas</h3><div class="stats-grid">
+    <div class="stat"><small data-i18n="successes">Sucessos</small><strong id="successes">0</strong></div>
+    <div class="stat"><small data-i18n="fails">Falhas</small><strong id="fails">0</strong></div>
+    <div class="stat"><small data-i18n="slots">Slots</small><strong id="filledSlots">0/0</strong></div>
+    <div class="stat"><small data-i18n="rate">Taxa</small><strong id="successRate">0%</strong></div>
+   </div></div>
+   <div class="support-box">
+    <h3 data-i18n="supportTitle">Apoie o Desenvolvedor</h3>
+    <div class="support-item"><b>Revolut:</b> @otaviomacolt</div>
+    <div class="support-item"><b>Pix:</b> 39154087864</div>
+    <div class="support-item"><b>Parcel (Jogo):</b> Personagem <b>Macolt</b>, cidade <b>Home</b></div>
+   </div>
+  </aside>
+ </div>
+</div>
+
+<!-- Importação do arquivo externo de configuração de itens -->
+<script src="item-config.js"></script>
+
+<script>
+const I18N = {
+  'pt-BR': {
+    htmlLang:'pt-BR', typeLabel:'Tipo', allTypes:'Todos os Tipos', itemLabel:'Item', languageLabel:'Idioma', tier:'Tier', subtitle:'Simulador de atributos para itens • Desenvolvido por <b>Macolt</b>',
+    enchantment:'Encantamento', stones:'Pedras', ready:'Pronto para encantar', eachAttempt:'Cada tentativa consome 1 pedra.',
+    enchant:'ENCANTAR', reset:'LIMPAR / RESET', shareBtn:'📋 COMPARTILHAR ITEM', history:'Histórico', rules:'Regras:', flowTitle:'Fluxo de cada pedra:',
+    flowText:'1) escolhe aleatoriamente um atributo; 2) rola Tiers independentes para Amount e Chance (se houver); 3) usa o maior valor de Enchant (Math.max) como taxa de sucesso; 4) se falhar, nenhum atributo entra.',
+    costs:'Custos', stonesSpent:'Pedras gastas', gold:'Ouro', ores:'Barras de minério', stats:'Estatísticas', successes:'Sucessos', fails:'Falhas', slots:'Slots', rate:'Taxa',
+    supportTitle:'Apoie o Desenvolvedor',
+    slotsOne:'slot de atributo', slotsMany:'slots de atributos', possible:'atributos possíveis', none:'Nenhum atributo aplicado', noAttempts:'Nenhuma tentativa ainda.',
+    successResult:'✨ {attribute} {value}', successDetail:'{tier} • Roll de sucesso em {chance}%', failResult:'💨 Encantamento falhou', failDetail:'{attribute} → {tier} ({chance}%) • Nenhum atributo foi aplicado. A pedra foi consumida.',
+    resetResult:'Pronto para encantar', resetDetail:'Cada tentativa consome 1 pedra.', noAttributes:'', blocked:'',
+    possibleAttrsTitle: 'Atributos Possíveis',
+    shareSuccess: '📋 Item copiado para a área de transferência!',
+    ore:{Copper:'Cobre',Silver:'Prata',Gold:'Ouro',Obsidian:'Obsidiana',Hell:'Inferno'},
+    attr:{Attack:'Ataque','Critical Hit':'Acerto Crítico',Defense:'Defesa','Life Leech':'Roubo de Vida','Sword Fighting':'Sword Fighting',Weight:'Peso'}
+  },
+  en: {
+    htmlLang:'en', typeLabel:'Type', allTypes:'All Types', itemLabel:'Item', languageLabel:'Language', tier:'Tier', subtitle:'Attribute simulator for RPG items • Developed by <b>Macolt</b>',
+    enchantment:'Enchantment', stones:'Stones', ready:'Ready to enchant', eachAttempt:'Each attempt consumes 1 stone.',
+    enchant:'ENCHANT', reset:'CLEAR / RESET', shareBtn:'📋 SHARE ITEM', history:'History', rules:'Rules:', flowTitle:'Flow for each stone:',
+    flowText:'1) randomly chooses an attribute; 2) rolls independent Tiers for Amount and Chance; 3) uses the highest enchant chance via Math.max; 4) on failure, no attribute is applied.',
+    costs:'Costs', stonesSpent:'Stones spent', gold:'Gold', ores:'Ore bars', stats:'Statistics', successes:'Successes', fails:'Failures', slots:'Slots', rate:'Rate',
+    supportTitle:'Support the Developer',
+    slotsOne:'attribute slot', slotsMany:'attribute slots', possible:'possible attributes', none:'No attribute applied', noAttempts:'No attempts yet.',
+    successResult:'✨ {attribute} {value}', successDetail:'{tier} • Success roll at {chance}%', failResult:'💨 Enchantment failed', failDetail:'{attribute} → {tier} ({chance}%) • No attribute was applied. The stone was consumed.',
+    resetResult:'Ready to enchant', resetDetail:'Each attempt consumes 1 stone.', noAttributes:'', blocked:'',
+    possibleAttrsTitle: 'Possible Attributes',
+    shareSuccess: '📋 Item copied to clipboard!',
+    ore:{Copper:'Copper',Silver:'Silver',Gold:'Gold',Obsidian:'Obsidian',Hell:'Hell'},
+    attr:{Attack:'Attack','Critical Hit':'Critical Hit',Defense:'Defense','Life Leech':'Life Leech','Sword Fighting':'Sword Fighting',Weight:'Weight'}
+  },
+  pl: {
+    htmlLang:'pl', typeLabel:'Typ', allTypes:'Wszystkie typy', itemLabel:'Przedmiot', languageLabel:'Język', tier:'Tier', subtitle:'Symulator atrybutów dla przedmiotów RPG • Stworzony przez <b>Macolt</b>',
+    enchantment:'Zaklinanie', stones:'Kamienie', ready:'Gotowy do zaklinania', eachAttempt:'Każda próba zużywa 1 kamień.',
+    enchant:'ZAKLIJ', reset:'WYCZYŚĆ / RESET', shareBtn:'📋 UDOSTĘPNIJ PRZEDMIOT', history:'Historia', rules:'Zasady:', flowTitle:'Przebieg każdego kamienia:',
+    flowText:'1) losuje atrybut; 2) losuje niezależne Tiery dla Amount i Chance; 3) używa najwyższej szansy zaklęcia poprzez Math.max; 4) przy porażce żaden atrybut nie zostaje dodany.',
+    costs:'Koszty', stonesSpent:'Zużyte kamienie', gold:'Złoto', ores:'Sztabki rudy', stats:'Statystyki', successes:'Sukcesy', fails:'Porażki', slots:'Sloty', rate:'Wskaźnik',
+    supportTitle:'Wspomóż twórcę',
+    slotsOne:'slot atrybutu', slotsMany:'sloty atrybutów', possible:'możliwe atrybuty', none:'Brak zastosowanego atrybutu', noAttempts:'Brak prób.',
+    successResult:'✨ {attribute} {value}', successDetail:'{tier} • Rzut sukcesu przy {chance}%', failResult:'💨 Zaklinanie nieudane', failDetail:'{attribute} → {tier} ({chance}%) • Żaden atrybut nie został dodany. Kamień został zużyty.',
+    resetResult:'Gotowy do zaklinania', resetDetail:'Każda próba zużywa 1 kamień.', noAttributes:'', blocked:'',
+    possibleAttrsTitle: 'Możliwe atrybuty',
+    shareSuccess: '📋 Przedmiot skopiowany do schowka!',
+    ore:{Copper:'Miedź',Silver:'Srebro',Gold:'Złoto',Obsidian:'Obsydian',Hell:'Piekło'},
+    attr:{Attack:'Atak','Critical Hit':'Trafienie krytyczne',Defense:'Obrona','Life Leech':'Kradzież życia','Sword Fighting':'Walka mieczem',Weight:'Waga'}
+  }
+};
+let language=localStorage.getItem('enchantLanguage')||'pt-BR';
+function t(key){ return I18N[language][key] ?? key; }
+function interpolate(text, vars){ return text.replace(/\{(\w+)\}/g,(_,k)=>vars[k] ?? ''); }
+function trAttr(name){ return I18N[language].attr[name] || name; }
+function applyLanguage(){
+ document.documentElement.lang=I18N[language].htmlLang;
+ document.querySelectorAll('[data-i18n]').forEach(el=>{ const key=el.dataset.i18n; el.innerHTML=I18N[language][key] ?? el.innerHTML; });
+ $('languageSelect').value=language;
+ renderTypes(); renderItems(); renderOres(); render();
+}
+
+const CONFIG={stoneGold:7500,stoneDwarfCoins:5,ores:[
+  {name:'Copper',coins:1,image:'assets/copperbar.png'},
+ {name:'Silver',coins:2,image:'assets/silverbar.png'},
+ {name:'Gold',coins:5,image:'assets/goldbar.png'},
+ {name:'Obsidian',coins:10,image:'assets/obsidianbar.png'},
+ {name:'Hell',coins:20,image:'assets/hellstonebar.png'}
+]};
+let selectedItem=typeof ITEMS !== 'undefined' ? ITEMS[0] : null, current=[], stones=0, history=[], selectedType='All';
+const $=id=>document.getElementById(id);
+function randomItem(list){return list[Math.floor(Math.random()*list.length)]}
+function setResult(cls,big,detail){$('result').className='result '+cls;$('result').innerHTML=`<div><div class="big">${big}</div><div class="detail">${detail}</div></div>`}
+
+function rollResult(available){
+ const attribute=randomItem(available);
+ 
+ if(attribute.hasChanceCol) {
+  const tierAmtIndex = Math.floor(Math.random()*3);
+  const tierChcIndex = Math.floor(Math.random()*3);
+  const levelAmt = attribute.levels[tierAmtIndex];
+  const levelChc = attribute.levels[tierChcIndex];
+  
+  const valText = `${levelAmt.value} / +${levelChc.chanceChc}%`;
+  const finalChance = Math.max(levelAmt.enchant, levelChc.enchant);
+  const success = Math.random()*100 < finalChance;
+  
+  return {
+    success,
+    attribute,
+    value: valText,
+    tier: `Amount: T${tierAmtIndex+1} / Chance: T${tierChcIndex+1}`,
+    chance: finalChance
+  };
+ } else {
+  const tierIndex = Math.floor(Math.random()*3);
+  const level = attribute.levels[tierIndex];
+  const success = Math.random()*100 < level.chance;
+  return {
+    success,
+    attribute,
+    value: level.value,
+    tier: `T${tierIndex+1}`,
+    chance: level.chance
+  };
+ }
+}
+
+function renderTypes(){
+ const types = [...new Set(ITEMS.map(i => i.tipe || i.type).filter(Boolean))];
+ let options = `<option value="All">${t('allTypes')}</option>`;
+ types.type = types.forEach ? types.forEach(type => { options += `<option value="${type}">${type}</option>`; }) : null;
+ $('typeSelect').innerHTML = options;
+ $('typeSelect').value = selectedType;
+}
+function renderItems(){
+ const filtered = selectedType === 'All' ? ITEMS : ITEMS.filter(i => (i.tipe || i.type) === selectedType);
+ $('itemSelect').innerHTML = filtered.map(item => `<option value="${item.id}">${item.name} • ${t('tier')} ${item.tier}</option>`).join('');
+ if(filtered.length > 0) {
+  if(!selectedItem || !filtered.some(i => i.id === selectedItem.id)) { selectedItem = filtered[0]; }
+  $('itemSelect').value = selectedItem.id;
+ }
+}
+function render(){
+ if(!selectedItem) return;
+ $('itemImage').src=selectedItem.image||'assets/item-placeholder.svg';
+ $('itemImage').alt=selectedItem.name;
+ $('itemName').textContent=selectedItem.name;
+ $('itemSubtitle').textContent=`${t('tier')} ${selectedItem.tier} • ${selectedItem.tier} ${selectedItem.tier===1?t('slotsOne'):t('slotsMany')} • ${selectedItem.attributes.length} ${t('possible')}`;
+ 
+ $('slots').innerHTML=Array.from({length:selectedItem.tier},(_,i)=>`<span class="slot ${i<current.length?'filled':''}"></span>`).join('');
+ $('attrs').innerHTML=current.length?current.map(a=>`<div class="attr"><span><b>${trAttr(a.name)}</b> · ${a.tier}</span><small>${a.value}</small></div>`).join(''):`<div class="attr empty">${t('none')}</div>`;
+ 
+ const possibleHtml = selectedItem.attributes.map(a => {
+   let vals = '';
+   if(a.hasChanceCol) {
+     vals = a.levels.map(l => `${l.value} / +${l.chanceChc}%`).join(' | ');
+   } else {
+     vals = a.levels.map(l => l.value).join(' / ');
+   }
+   return `<div class="p-attr"><span class="p-attr-name">${trAttr(a.name)}</span><span class="p-attr-vals">${vals}</span></div>`;
+ }).join('');
+ $('possibleList').innerHTML = possibleHtml;
+
+ $('stones').textContent=stones;$('costStones').textContent=stones;
+ const locale=language==='en'?'en-US':language==='pl'?'pl-PL':'pt-BR'; $('goldCost').textContent=(stones*CONFIG.stoneGold).toLocaleString(locale);$('coinCost').textContent=(stones*CONFIG.stoneDwarfCoins).toLocaleString(locale);
+ $('enchant').disabled=current.length>=selectedItem.tier||selectedItem.attributes.length===0;
+ $('filledSlots').textContent=`${current.length}/${selectedItem.tier}`;
+ const successes=history.filter(h=>h.success).length, fails=history.length-successes;
+ $('successes').textContent=successes;$('fails').textContent=fails;$('successRate').textContent=history.length?((successes/history.length)*100).toFixed(1)+'%':'0%';
+ $('history').innerHTML=history.length?history.slice().reverse().map((h,i)=>h.success?`<div class="row"><span>${interpolate(t('successResult'),{attribute:trAttr(h.attribute.name),value:h.value})} · ${h.tier}</span><span>#${history.length-i}</span></div>`:`<div class="row fail-row"><span>❌ ${language==='en'?'Failed':language==='pl'?'Nieudane':'Falhou'} — ${trAttr(h.attribute.name)} (${h.tier}) (${h.chance}%)</span><span>#${history.length-i}</span></div>`).join(''):`<div class="row"><span>${t('noAttempts')}</span><span>—</span></div>`;
+}
+function renderOres(){ $('ores').innerHTML=CONFIG.ores.map(o=>`<div class="ore-row"><img class="ore-icon" src="${o.image}" alt="${I18N[language].ore[o.name]||o.name}"><span class="ore-name">${I18N[language].ore[o.name]||o.name}</span><span class="ore-coins">${o.coins} DC</span></div>`).join(''); }
+function enchant(){
+ if(current.length>=selectedItem.tier||!selectedItem.attributes.length)return;
+ const available=selectedItem.attributes.filter(a=>!current.some(x=>x.name===a.name));
+ if(!available.length)return;
+ stones++;
+ const result=rollResult(available);
+ history.push({success:result.success,attribute:result.attribute,value:result.value,tier:result.tier,chance:result.chance});
+ if(!result.success){setResult('fail',t('failResult'),interpolate(t('failDetail'),{attribute:trAttr(result.attribute.name),tier:result.tier,chance:result.chance}))}
+ else {current.push({name:result.attribute.name,value:result.value,tier:result.tier});setResult('success',interpolate(t('successResult'),{attribute:trAttr(result.attribute.name),value:result.value}),interpolate(t('successDetail'),{tier:result.tier,chance:result.chance}))}
+ render();
+}
+function reset(){current=[];stones=0;history=[];setResult('',t('resetResult'),t('resetDetail'));render()}
+function changeItem(){const id=$('itemSelect').value;selectedItem=ITEMS.find(i=>i.id===id)||ITEMS[0];reset()}
+
+function shareItem(){
+ const attrsText = current.length > 0 
+   ? current.map(a => `• ${trAttr(a.name)} (${a.tier}): ${a.value}`).join('\n') 
+   : `• ${t('none')}`;
+ 
+ const successes = history.filter(h=>h.success).length;
+ const fails = history.length - successes;
+ const rate = history.length ? ((successes/history.length)*100).toFixed(1)+'%' : '0%';
+ const locale = language==='en'?'en-US':language==='pl'?'pl-PL':'pt-BR';
+ const goldFormatted = (stones*CONFIG.stoneGold).toLocaleString(locale);
+ const dcFormatted = (stones*CONFIG.stoneDwarfCoins).toLocaleString(locale);
+
+ const shareText = `⚒ [Mythera Enchantment Simulator]
+Item: ${selectedItem.name} (Tier ${selectedItem.tier})
+Atributos Aplicados (${current.length}/${selectedItem.tier}):
+${attrsText}
+
+📊 Estatísticas da Tentativa:
+- Pedras Gastas: ${stones}
+- Ouro Gasto: ${goldFormatted}
+- Dwarf Coins: ${dcFormatted}
+- Sucessos: ${successes} | Falhas: ${fails} (Taxa: ${rate})
+Desenvolvido por Macolt`;
+
+ navigator.clipboard.writeText(shareText).then(() => {
+   setResult('success', t('shareSuccess'), `${selectedItem.name} — ${current.length}/${selectedItem.tier} slots`);
+ }).catch(err => {
+   console.error('Erro ao copiar', err);
+ });
+}
+
+$('enchant').onclick=enchant;$('reset').onclick=reset;$('shareBtn').onclick=shareItem;$('itemSelect').onchange=changeItem;
+$('typeSelect').onchange=()=>{ selectedType=$('typeSelect').value; renderItems(); changeItem(); };
+$('languageSelect').onchange=()=>{language=$('languageSelect').value;localStorage.setItem('enchantLanguage',language);applyLanguage()};
+
+if(typeof ITEMS !== 'undefined' && ITEMS.length > 0){
+ renderTypes();renderItems();renderOres();render();applyLanguage();
+}
+</script>
+</body>
+</html>
