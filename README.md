@@ -8,7 +8,7 @@ Edite `item-config.js`.
 Cada item possui:
 - `name`: nome exibido;
 - `tier`: quantidade máxima de atributos/slots (1 a 5);
-- `type`: tipo do item;
+- `tipe`: tipo do item;
 - `image`: caminho da imagem;
 - `attributes`: lista de atributos possíveis exclusivamente daquele item;
 - `levels`: T1, T2 e T3, cada um com `value` e `chance`.
