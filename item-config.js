@@ -1,5 +1,6 @@
-// item-config.js
+// item-config.js (Atualizado com a categoria Quivers)
 const ITEMS = [
+  // --- SWORDS (Mantidos da etapa anterior) ---
   {
     id: "fire-sword",
     name: "Fire Sword",
@@ -633,8 +634,404 @@ const ITEMS = [
         ]
       }
     ]
+  },
+
+  // --- QUIVERS (Adicionados com base nas imagens) ---
+  {
+    id: "scale-quiver",
+    name: "Scale Quiver",
+    tier: 2,
+    tipe: "Quiver",
+    image: "assets/scale-quiver.png",
+    attributes: [
+      {
+        name: "Armor",
+        levels: [
+          { value: "+1", chance: 10 },
+          { value: "+2", chance: 8 }
+        ]
+      },
+      {
+        name: "Attack",
+        levels: [
+          { value: "+1", chance: 10 },
+          { value: "+2", chance: 8 }
+        ]
+      },
+      {
+        name: "Attack Interval",
+        levels: [
+          { value: "-1%", chance: 6 },
+          { value: "-2%", chance: 4 }
+        ]
+      },
+      {
+        name: "Critical Hit",
+        hasChanceCol: true,
+        levels: [
+          { value: "+5%", chanceAmt: 5, chanceChc: 6, enchant: 6 },
+          { value: "+10%", chanceAmt: 6, chanceChc: 4, enchant: 4 }
+        ]
+      },
+      {
+        name: "Distance Fighting",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 }
+        ]
+      },
+      {
+        name: "Hitchance",
+        levels: [
+          { value: "+1%", chance: 10 },
+          { value: "+2%", chance: 8 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "frozen-quiver",
+    name: "Frozen Quiver",
+    tier: 2,
+    tipe: "Quiver",
+    image: "assets/frozen-quiver.png",
+    attributes: [
+      {
+        name: "Armor",
+        levels: [
+          { value: "+1", chance: 10 },
+          { value: "+2", chance: 8 }
+        ]
+      },
+      {
+        name: "Attack",
+        levels: [
+          { value: "+1", chance: 10 },
+          { value: "+2", chance: 8 }
+        ]
+      },
+      {
+        name: "Attack Interval",
+        levels: [
+          { value: "-1%", chance: 6 },
+          { value: "-2%", chance: 4 }
+        ]
+      },
+      {
+        name: "Critical Hit",
+        hasChanceCol: true,
+        levels: [
+          { value: "+5%", chanceAmt: 5, chanceChc: 6, enchant: 6 },
+          { value: "+10%", chanceAmt: 6, chanceChc: 4, enchant: 4 }
+        ]
+      },
+      {
+        name: "Distance Fighting",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 }
+        ]
+      },
+      {
+        name: "Hitchance",
+        levels: [
+          { value: "+1%", chance: 10 },
+          { value: "+2%", chance: 8 }
+        ]
+      },
+      {
+        name: "Protect Physical",
+        levels: [
+          { value: "+1%", chance: 6 },
+          { value: "+2%", chance: 4 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "flaming-quiver",
+    name: "Flaming Quiver",
+    tier: 3,
+    tipe: "Quiver",
+    image: "assets/flaming-quiver.png",
+    attributes: [
+      {
+        name: "Attack",
+        levels: [
+          { value: "+1", chance: 10 },
+          { value: "+2", chance: 8 },
+          { value: "+3", chance: 6 }
+        ]
+      },
+      {
+        name: "Attack Interval",
+        levels: [
+          { value: "-1%", chance: 6 },
+          { value: "-2%", chance: 4 },
+          { value: "-3%", chance: 2 }
+        ]
+      },
+      {
+        name: "Burning",
+        hasChanceCol: true,
+        levels: [
+          { value: "+11", chanceAmt: 5, chanceChc: 6, enchant: 6 },
+          { value: "+12", chanceAmt: 6, chanceChc: 4, enchant: 4 },
+          { value: "+13", chanceAmt: 7, chanceChc: 2, enchant: 2 }
+        ]
+      },
+      {
+        name: "Critical Hit",
+        hasChanceCol: true,
+        levels: [
+          { value: "+5%", chanceAmt: 5, chanceChc: 6, enchant: 6 },
+          { value: "+10%", chanceAmt: 6, chanceChc: 4, enchant: 4 },
+          { value: "+15%", chanceAmt: 7, chanceChc: 2, enchant: 2 }
+        ]
+      },
+      {
+        name: "Distance Fighting",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 },
+          { value: "+3", chance: 4 }
+        ]
+      },
+      {
+        name: "Hitchance",
+        levels: [
+          { value: "+1%", chance: 10 },
+          { value: "+2%", chance: 8 },
+          { value: "+3%", chance: 6 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "skull-quiver",
+    name: "Skull Quiver",
+    tier: 3,
+    tipe: "Quiver",
+    image: "assets/skull-quiver.png",
+    attributes: [
+      {
+        name: "Attack",
+        levels: [
+          { value: "+1", chance: 10 },
+          { value: "+2", chance: 8 },
+          { value: "+3", chance: 6 }
+        ]
+      },
+      {
+        name: "Attack Interval",
+        levels: [
+          { value: "-1%", chance: 6 },
+          { value: "-2%", chance: 4 },
+          { value: "-3%", chance: 2 }
+        ]
+      },
+      {
+        name: "Critical Hit",
+        hasChanceCol: true,
+        levels: [
+          { value: "+5%", chanceAmt: 5, chanceChc: 6, enchant: 6 },
+          { value: "+10%", chanceAmt: 6, chanceChc: 4, enchant: 4 },
+          { value: "+15%", chanceAmt: 7, chanceChc: 2, enchant: 2 }
+        ]
+      },
+      {
+        name: "Distance Fighting",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 },
+          { value: "+3", chance: 4 }
+        ]
+      },
+      {
+        name: "Hitchance",
+        levels: [
+          { value: "+1%", chance: 10 },
+          { value: "+2%", chance: 8 },
+          { value: "+3%", chance: 6 }
+        ]
+      },
+      {
+        name: "Life Leech",
+        hasChanceCol: true,
+        levels: [
+          { value: "+2%", chanceAmt: 1, chanceChc: 6, enchant: 6 },
+          { value: "+4%", chanceAmt: 2, chanceChc: 4, enchant: 4 },
+          { value: "+6%", chanceAmt: 3, chanceChc: 2, enchant: 2 }
+        ]
+      },
+      {
+        name: "Magic Level",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 },
+          { value: "+3", chance: 4 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "quiver-of-valor",
+    name: "Quiver Of Valor",
+    tier: 4,
+    tipe: "Quiver",
+    image: "assets/quiver-of-valor.png",
+    attributes: [
+      {
+        name: "Armor",
+        levels: [
+          { value: "+1", chance: 10 },
+          { value: "+2", chance: 8 },
+          { value: "+3", chance: 6 },
+          { value: "+4", chance: 4 }
+        ]
+      },
+      {
+        name: "Attack Interval",
+        levels: [
+          { value: "-1%", chance: 6 },
+          { value: "-2%", chance: 4 },
+          { value: "-3%", chance: 2 },
+          { value: "-4%", chance: 1 }
+        ]
+      },
+      {
+        name: "Critical Hit",
+        hasChanceCol: true,
+        levels: [
+          { value: "+5%", chanceAmt: 5, chanceChc: 6, enchant: 6 },
+          { value: "+10%", chanceAmt: 6, chanceChc: 4, enchant: 4 },
+          { value: "+15%", chanceAmt: 7, chanceChc: 2, enchant: 2 },
+          { value: "+20%", chanceAmt: 8, chanceChc: 1, enchant: 1 }
+        ]
+      },
+      {
+        name: "Distance Fighting",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 },
+          { value: "+3", chance: 4 },
+          { value: "+4", chance: 2 }
+        ]
+      },
+      {
+        name: "Hitchance",
+        levels: [
+          { value: "+1%", chance: 10 },
+          { value: "+2%", chance: 8 },
+          { value: "+3%", chance: 6 },
+          { value: "+4%", chance: 4 }
+        ]
+      },
+      {
+        name: "Protect Physical",
+        levels: [
+          { value: "+1%", chance: 6 },
+          { value: "+2%", chance: 4 },
+          { value: "+3%", chance: 2 },
+          { value: "+4%", chance: 1 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "demonic-quiver",
+    name: "Demonic Quiver",
+    tier: 4,
+    tipe: "Quiver",
+    image: "assets/demonic-quiver.png",
+    attributes: [
+      {
+        name: "Attack",
+        levels: [
+          { value: "+1", chance: 10 },
+          { value: "+2", chance: 8 },
+          { value: "+3", chance: 6 },
+          { value: "+4", chance: 4 }
+        ]
+      },
+      {
+        name: "Attack Interval",
+        levels: [
+          { value: "-1%", chance: 6 },
+          { value: "-2%", chance: 4 },
+          { value: "-3%", chance: 2 },
+          { value: "-4%", chance: 1 }
+        ]
+      },
+      {
+        name: "Critical Hit",
+        hasChanceCol: true,
+        levels: [
+          { value: "+5%", chanceAmt: 5, chanceChc: 6, enchant: 6 },
+          { value: "+10%", chanceAmt: 6, chanceChc: 4, enchant: 4 },
+          { value: "+15%", chanceAmt: 7, chanceChc: 2, enchant: 2 },
+          { value: "+20%", chanceAmt: 8, chanceChc: 1, enchant: 1 }
+        ]
+      },
+      {
+        name: "Distance Fighting",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 },
+          { value: "+3", chance: 4 },
+          { value: "+4", chance: 2 }
+        ]
+      },
+      {
+        name: "Hitchance",
+        levels: [
+          { value: "+1%", chance: 10 },
+          { value: "+2%", chance: 8 },
+          { value: "+3%", chance: 6 },
+          { value: "+4%", chance: 4 }
+        ]
+      },
+      {
+        name: "Life Leech",
+        hasChanceCol: true,
+        levels: [
+          { value: "+2%", chanceAmt: 1, chanceChc: 6, enchant: 6 },
+          { value: "+4%", chanceAmt: 2, chanceChc: 4, enchant: 4 },
+          { value: "+6%", chanceAmt: 3, chanceChc: 2, enchant: 2 },
+          { value: "+8%", chanceAmt: 4, chanceChc: 1, enchant: 1 }
+        ]
+      },
+      {
+        name: "Magic Level",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 },
+          { value: "+3", chance: 4 },
+          { value: "+4", chance: 2 }
+        ]
+      },
+      {
+        name: "Mana Leech",
+        hasChanceCol: true,
+        levels: [
+          { value: "+1%", chanceAmt: 1, chanceChc: 6, enchant: 6 },
+          { value: "+2%", chanceAmt: 2, chanceChc: 4, enchant: 4 },
+          { value: "+3%", chanceAmt: 3, chanceChc: 2, enchant: 2 },
+          { value: "+4%", chanceAmt: 4, chanceChc: 1, enchant: 1 }
+        ]
+      },
+      {
+        name: "Protect Fire",
+        levels: [
+          { value: "+1%", chance: 6 },
+          { value: "+2%", chance: 4 },
+          { value: "+3%", chance: 2 },
+          { value: "+4%", chance: 1 }
+        ]
+      }
+    ]
   }
 ];
 
-// Garante que o array fique ordenado por tier
+// Garante que o array fique ordenado por tier globalmente
 ITEMS.sort((b, a) => a.tier - b.tier);
