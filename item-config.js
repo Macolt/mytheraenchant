@@ -1770,7 +1770,538 @@ const ITEMS = [
         ]
       }
     ]
+  },
+
+// --- CLUBS ---
+  {
+    id: "thunder-hammer",
+    name: "Thunder Hammer",
+    tier: 5,
+    tipe: "Clubs",
+    image: "assets/thunder-hammer.png",
+    attributes: [
+      {
+        name: "Attack",
+        levels: [
+          { value: "+1", chance: 10 },
+          { value: "+2", chance: 8 },
+          { value: "+3", chance: 6 },
+          { value: "+4", chance: 4 },
+          { value: "+5", chance: 2 }
+        ]
+      },
+      {
+        name: "Attack Interval",
+        levels: [
+          { value: "-5%", chance: 6 },
+          { value: "-6%", chance: 4 },
+          { value: "-7%", chance: 2 },
+          { value: "-8%", chance: 1 },
+          { value: "-9%", chance: 0.5 }
+        ]
+      },
+      {
+        name: "Club Fighting",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 },
+          { value: "+3", chance: 4 },
+          { value: "+4", chance: 2 },
+          { value: "+5", chance: 1 }
+        ]
+      },
+      {
+        name: "Crushing Blow",
+        levels: [
+          { value: "+4%", chance: 10 },
+          { value: "+6%", chance: 8 },
+          { value: "+8%", chance: 6 },
+          { value: "+10%", chance: 4 },
+          { value: "+12%", chance: 2 }
+        ]
+      },
+      {
+        name: "Life Leech",
+        hasChanceCol: true,
+        levels: [
+          { value: "+5%", chanceAmt: 5, chanceChc: 6, enchant: 6 },
+          { value: "+7%", chanceAmt: 10, chanceChc: 4, enchant: 4 },
+          { value: "+9%", chanceAmt: 15, chanceChc: 2, enchant: 2 },
+          { value: "+11%", chanceAmt: 20, chanceChc: 1, enchant: 1 },
+          { value: "+13%", chanceAmt: 25, chanceChc: 0.5, enchant: 0.5 }
+        ]
+      },
+      {
+        name: "Magic Level",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 },
+          { value: "+3", chance: 4 },
+          { value: "+4", chance: 2 },
+          { value: "+5", chance: 1 }
+        ]
+      },
+      {
+        name: "Mana Leech",
+        hasChanceCol: true,
+        levels: [
+          { value: "+3%", chanceAmt: 5, chanceChc: 6, enchant: 6 },
+          { value: "+4%", chanceAmt: 10, chanceChc: 4, enchant: 4 },
+          { value: "+5%", chanceAmt: 15, chanceChc: 2, enchant: 2 },
+          { value: "+6%", chanceAmt: 20, chanceChc: 1, enchant: 1 },
+          { value: "+7%", chanceAmt: 25, chanceChc: 0.5, enchant: 0.5 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "silver-mace",
+    name: "Silver Mace",
+    tier: 4,
+    tipe: "Clubs",
+    image: "assets/silver-mace.png",
+    attributes: [
+      {
+        name: "Attack",
+        levels: [
+          { value: "+1", chance: 10 },
+          { value: "+2", chance: 8 },
+          { value: "+3", chance: 6 },
+          { value: "+4", chance: 4 }
+        ]
+      },
+      {
+        name: "Attack Interval",
+        levels: [
+          { value: "-5%", chance: 6 },
+          { value: "-6%", chance: 4 },
+          { value: "-7%", chance: 2 },
+          { value: "-8%", chance: 1 }
+        ]
+      },
+      {
+        name: "Club Fighting",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 },
+          { value: "+3", chance: 4 },
+          { value: "+4", chance: 2 }
+        ]
+      },
+      {
+        name: "Crushing Blow",
+        levels: [
+          { value: "+4%", chance: 10 },
+          { value: "+6%", chance: 8 },
+          { value: "+8%", chance: 6 },
+          { value: "+10%", chance: 4 }
+        ]
+      },
+      {
+        name: "Life Leech",
+        hasChanceCol: true,
+        levels: [
+          { value: "+5%", chanceAmt: 5, chanceChc: 6, enchant: 6 },
+          { value: "+7%", chanceAmt: 10, chanceChc: 4, enchant: 4 },
+          { value: "+9%", chanceAmt: 15, chanceChc: 2, enchant: 2 },
+          { value: "+11%", chanceAmt: 20, chanceChc: 1, enchant: 1 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "arcane-staff",
+    name: "Arcane Staff",
+    tier: 4,
+    tipe: "Clubs",
+    image: "assets/arcane-staff.png",
+    attributes: [
+      {
+        name: "Attack",
+        levels: [
+          { value: "+2", chance: 10 },
+          { value: "+4", chance: 8 },
+          { value: "+6", chance: 6 },
+          { value: "+8", chance: 4 }
+        ]
+      },
+      {
+        name: "Club Fighting",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 },
+          { value: "+3", chance: 4 },
+          { value: "+4", chance: 2 }
+        ]
+      },
+      {
+        name: "Critical Spell",
+        hasChanceCol: true,
+        levels: [
+          { value: "+20%", chanceAmt: 5, chanceChc: 6, enchant: 6 },
+          { value: "+40%", chanceAmt: 6, chanceChc: 4, enchant: 4 },
+          { value: "+60%", chanceAmt: 7, chanceChc: 2, enchant: 2 },
+          { value: "+80%", chanceAmt: 8, chanceChc: 1, enchant: 1 }
+        ]
+      },
+      {
+        name: "Magic Level",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 },
+          { value: "+3", chance: 4 },
+          { value: "+4", chance: 2 }
+        ]
+      },
+      {
+        name: "Mana Leech",
+        hasChanceCol: true,
+        levels: [
+          { value: "+3%", chanceAmt: 5, chanceChc: 6, enchant: 6 },
+          { value: "+4%", chanceAmt: 10, chanceChc: 4, enchant: 4 },
+          { value: "+5%", chanceAmt: 15, chanceChc: 2, enchant: 2 },
+          { value: "+6%", chanceAmt: 20, chanceChc: 1, enchant: 1 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "dragon-hammer",
+    name: "Dragon Hammer",
+    tier: 3,
+    tipe: "Clubs",
+    image: "assets/dragon-hammer.png",
+    attributes: [
+      {
+        name: "Attack",
+        levels: [
+          { value: "+1", chance: 10 },
+          { value: "+2", chance: 8 },
+          { value: "+3", chance: 6 }
+        ]
+      },
+      {
+        name: "Attack Interval",
+        levels: [
+          { value: "-5%", chance: 6 },
+          { value: "-6%", chance: 4 },
+          { value: "-7%", chance: 2 }
+        ]
+      },
+      {
+        name: "Club Fighting",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 },
+          { value: "+3", chance: 4 }
+        ]
+      },
+      {
+        name: "Crushing Blow",
+        levels: [
+          { value: "+4%", chance: 10 },
+          { value: "+6%", chance: 8 },
+          { value: "+8%", chance: 6 }
+        ]
+      },
+      {
+        name: "Life Leech",
+        hasChanceCol: true,
+        levels: [
+          { value: "+5%", chanceAmt: 5, chanceChc: 6, enchant: 6 },
+          { value: "+7%", chanceAmt: 10, chanceChc: 4, enchant: 4 },
+          { value: "+9%", chanceAmt: 15, chanceChc: 2, enchant: 2 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "skull-staff",
+    name: "Skull Staff",
+    tier: 3,
+    tipe: "Clubs",
+    image: "assets/skull-staff.png",
+    attributes: [
+      {
+        name: "Attack",
+        levels: [
+          { value: "+1", chance: 10 },
+          { value: "+2", chance: 8 },
+          { value: "+3", chance: 6 }
+        ]
+      },
+      {
+        name: "Attack Interval",
+        levels: [
+          { value: "-5%", chance: 6 },
+          { value: "-6%", chance: 4 },
+          { value: "-7%", chance: 2 }
+        ]
+      },
+      {
+        name: "Club Fighting",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 },
+          { value: "+3", chance: 4 }
+        ]
+      },
+      {
+        name: "Magic Level",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 },
+          { value: "+3", chance: 4 }
+        ]
+      },
+      {
+        name: "Mana Leech",
+        hasChanceCol: true,
+        levels: [
+          { value: "+3%", chanceAmt: 5, chanceChc: 6, enchant: 6 },
+          { value: "+4%", chanceAmt: 10, chanceChc: 4, enchant: 4 },
+          { value: "+5%", chanceAmt: 15, chanceChc: 2, enchant: 2 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "crystal-mace",
+    name: "Crystal Mace",
+    tier: 3,
+    tipe: "Clubs",
+    image: "assets/crystal-mace.png",
+    attributes: [
+      {
+        name: "Attack",
+        levels: [
+          { value: "+1", chance: 10 },
+          { value: "+2", chance: 8 },
+          { value: "+3", chance: 6 }
+        ]
+      },
+      {
+        name: "Attack Interval",
+        levels: [
+          { value: "-5%", chance: 6 },
+          { value: "-6%", chance: 4 },
+          { value: "-7%", chance: 2 }
+        ]
+      },
+      {
+        name: "Club Fighting",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 },
+          { value: "+3", chance: 4 }
+        ]
+      },
+      {
+        name: "Crushing Blow",
+        levels: [
+          { value: "+4%", chance: 10 },
+          { value: "+6%", chance: 8 },
+          { value: "+8%", chance: 6 }
+        ]
+      },
+      {
+        name: "Life Leech",
+        hasChanceCol: true,
+        levels: [
+          { value: "+5%", chanceAmt: 5, chanceChc: 6, enchant: 6 },
+          { value: "+7%", chanceAmt: 10, chanceChc: 4, enchant: 4 },
+          { value: "+9%", chanceAmt: 15, chanceChc: 2, enchant: 2 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "war-hammer",
+    name: "War Hammer",
+    tier: 3,
+    tipe: "Clubs",
+    image: "assets/war-hammer.png",
+    attributes: [
+      {
+        name: "Attack",
+        levels: [
+          { value: "+2", chance: 10 },
+          { value: "+4", chance: 8 },
+          { value: "+6", chance: 6 }
+        ]
+      },
+      {
+        name: "Club Fighting",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 },
+          { value: "+3", chance: 4 }
+        ]
+      },
+      {
+        name: "Critical Hit",
+        hasChanceCol: true,
+        levels: [
+          { value: "+20%", chanceAmt: 5, chanceChc: 6, enchant: 6 },
+          { value: "+40%", chanceAmt: 6, chanceChc: 4, enchant: 4 },
+          { value: "+60%", chanceAmt: 7, chanceChc: 2, enchant: 2 }
+        ]
+      },
+      {
+        name: "Crushing Blow",
+        levels: [
+          { value: "+8%", chance: 10 },
+          { value: "+12%", chance: 8 },
+          { value: "+16%", chance: 6 }
+        ]
+      },
+      {
+        name: "Life Leech",
+        hasChanceCol: true,
+        levels: [
+          { value: "+5%", chanceAmt: 5, chanceChc: 6, enchant: 6 },
+          { value: "+7%", chanceAmt: 10, chanceChc: 4, enchant: 4 },
+          { value: "+9%", chanceAmt: 15, chanceChc: 2, enchant: 2 }
+        ]
+      },
+      {
+        name: "Weight",
+        levels: [
+          { value: "-25%", chance: 10 },
+          { value: "-40%", chance: 8 },
+          { value: "-55%", chance: 6 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "hammer-of-wrath",
+    name: "Hammer Of Wrath",
+    tier: 3,
+    tipe: "Clubs",
+    image: "assets/hammer-of-wrath.png",
+    attributes: [
+      {
+        name: "Attack",
+        levels: [
+          { value: "+2", chance: 10 },
+          { value: "+4", chance: 8 },
+          { value: "+6", chance: 6 }
+        ]
+      },
+      {
+        name: "Club Fighting",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 },
+          { value: "+3", chance: 4 }
+        ]
+      },
+      {
+        name: "Critical Hit",
+        hasChanceCol: true,
+        levels: [
+          { value: "+20%", chanceAmt: 5, chanceChc: 6, enchant: 6 },
+          { value: "+40%", chanceAmt: 6, chanceChc: 4, enchant: 4 },
+          { value: "+60%", chanceAmt: 7, chanceChc: 2, enchant: 2 }
+        ]
+      },
+      {
+        name: "Crushing Blow",
+        levels: [
+          { value: "+8%", chance: 10 },
+          { value: "+12%", chance: 8 },
+          { value: "+16%", chance: 6 }
+        ]
+      },
+      {
+        name: "Life Leech",
+        hasChanceCol: true,
+        levels: [
+          { value: "+5%", chanceAmt: 5, chanceChc: 6, enchant: 6 },
+          { value: "+7%", chanceAmt: 10, chanceChc: 4, enchant: 4 },
+          { value: "+9%", chanceAmt: 15, chanceChc: 2, enchant: 2 }
+        ]
+      },
+      {
+        name: "Weight",
+        levels: [
+          { value: "-25%", chance: 10 },
+          { value: "-40%", chance: 8 },
+          { value: "-55%", chance: 6 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "heavy-mace",
+    name: "Heavy Mace",
+    tier: 3,
+    tipe: "Clubs",
+    image: "assets/heavy-mace.png",
+    attributes: [
+      {
+        name: "Attack",
+        levels: [
+          { value: "+2", chance: 10 },
+          { value: "+4", chance: 8 },
+          { value: "+6", chance: 6 }
+        ]
+      },
+      {
+        name: "Club Fighting",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 },
+          { value: "+3", chance: 4 }
+        ]
+      },
+      {
+        name: "Critical Hit",
+        hasChanceCol: true,
+        levels: [
+          { value: "+20%", chanceAmt: 5, chanceChc: 6, enchant: 6 },
+          { value: "+40%", chanceAmt: 6, chanceChc: 4, enchant: 4 },
+          { value: "+60%", chanceAmt: 7, chanceChc: 2, enchant: 2 }
+        ]
+      },
+      {
+        name: "Crushing Blow",
+        levels: [
+          { value: "+8%", chance: 10 },
+          { value: "+12%", chance: 8 },
+          { value: "+16%", chance: 6 }
+        ]
+      },
+      {
+        name: "Life Leech",
+        hasChanceCol: true,
+        levels: [
+          { value: "+5%", chanceAmt: 5, chanceChc: 6, enchant: 6 },
+          { value: "+7%", chanceAmt: 10, chanceChc: 4, enchant: 4 },
+          { value: "+9%", chanceAmt: 15, chanceChc: 2, enchant: 2 }
+        ]
+      },
+      {
+        name: "Perforation",
+        levels: [
+          { value: "+8%", chance: 10 },
+          { value: "+12%", chance: 8 },
+          { value: "+16%", chance: 6 }
+        ]
+      },
+      {
+        name: "Weight",
+        levels: [
+          { value: "-25%", chance: 10 },
+          { value: "-40%", chance: 8 },
+          { value: "-55%", chance: 6 }
+        ]
+      }
+    ]
   }
+
+
 ];
 
 // Ordenação decrescente por tier aplicada corretamente
