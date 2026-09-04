@@ -167,37 +167,23 @@ function randomItem(list){return list[Math.floor(Math.random()*list.length)]}
 function setResult(cls,big,detail){$('result').className='result '+cls;$('result').innerHTML=`<div><div class="big">${big}</div><div class="detail">${detail}</div></div>`}
 
 function rollResult(available){
- const attribute=randomItem(available);
+ const attribute = randomItem(available);
  
- if(attribute.hasChanceCol) {
-  const tierAmtIndex = Math.floor(Math.random()*3);
-  const tierChcIndex = Math.floor(Math.random()*3);
-  const levelAmt = attribute.levels[tierAmtIndex];
-  const levelChc = attribute.levels[tierChcIndex];
-  
-  const valText = `${levelAmt.value} / +${levelChc.chanceChc}%`;
-  const finalChance = Math.max(levelAmt.enchant, levelChc.enchant);
-  const success = Math.random()*100 < finalChance;
-  
-  return {
-    success,
-    attribute,
-    value: valText,
-    tier: `Amount: T${tierAmtIndex+1} / Chance: T${tierChcIndex+1}`,
-    chance: finalChance
-  };
- } else {
-  const tierIndex = Math.floor(Math.random()*3);
-  const level = attribute.levels[tierIndex];
-  const success = Math.random()*100 < level.chance;
-  return {
-    success,
-    attribute,
-    value: level.value,
-    tier: `T${tierIndex+1}`,
-    chance: level.chance
-  };
- }
+ // Sorteia um nível válido com base na quantidade real de níveis disponíveis do atributo
+ const levelIndex = Math.floor(Math.random() * attribute.levels.length);
+ const level = attribute.levels[levelIndex];
+
+ // Suporta tanto o formato novo (enchant direto) quanto o modelo antigo se houver
+ const finalChance = level.enchant !== undefined ? level.enchant : (level.chance || 0);
+ const success = Math.random() * 100 < finalChance;
+ 
+ return {
+   success,
+   attribute,
+   value: level.value,
+   tier: `T${levelIndex + 1}`,
+   chance: finalChance
+ };
 }
 
 function renderTypes(){

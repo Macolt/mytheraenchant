@@ -2299,8 +2299,248 @@ const ITEMS = [
         ]
       }
     ]
-  }
+  },
 
+// --- BOOTS ---
+  {
+    id: "golden-boots",
+    name: "Golden Boots",
+    tier: 3,
+    tipe: "Boots",
+    image: "assets/golden-boots.png",
+    attributes: [
+      {
+        name: "Armor",
+        levels: [
+          { value: "+1", chance: 10 },
+          { value: "+2", chance: 8 },
+          { value: "+3", chance: 6 },
+          { value: "+4", chance: 4 }
+        ]
+      },
+      {
+        name: "Healing",
+        levels: [
+          { value: "+4%", chance: 6 },
+          { value: "+6%", chance: 4 },
+          { value: "+8%", chance: 2 },
+          { value: "+10%", chance: 1 }
+        ]
+      },
+      {
+        name: "Health Regen",
+        levels: [
+          { value: "+1/8s", chance: 6 },
+          { value: "+1/7.5s", chance: 4 },
+          { value: "+1/7s", chance: 2 },
+          { value: "+2/6.5s", chance: 1 }
+        ]
+      },
+      {
+        name: "Protect Energy",
+        levels: [
+          { value: "+1%", chance: 6 },
+          { value: "+2%", chance: 4 },
+          { value: "+3%", chance: 2 },
+          { value: "+4%", chance: 1 }
+        ]
+      },
+      {
+        name: "Protect Physical",
+        levels: [
+          { value: "+1%", chance: 6 },
+          { value: "+2%", chance: 4 },
+          { value: "+3%", chance: 2 },
+          { value: "+4%", chance: 1 }
+        ]
+      },
+      {
+        name: "Vibrancy",
+        levels: [
+          { value: "+5%", chance: 6 },
+          { value: "+10%", chance: 4 },
+          { value: "+15%", chance: 2 },
+          { value: "+20%", chance: 1 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "patched-boots",
+    name: "Patched Boots",
+    tier: 3,
+    tipe: "Boots",
+    image: "assets/patched-boots.png",
+    attributes: [
+      {
+        name: "Health Regen",
+        levels: [
+          { value: "+1/8s", chance: 6 },
+          { value: "+1/7.5s", chance: 4 },
+          { value: "+1/7s", chance: 2 }
+        ]
+      },
+      {
+        name: "Mana Regen",
+        levels: [
+          { value: "+1/24s", chance: 6 },
+          { value: "+1/22s", chance: 4 },
+          { value: "+1/20s", chance: 2 }
+        ]
+      },
+      {
+        name: "Protect Energy",
+        levels: [
+          { value: "+1%", chance: 6 },
+          { value: "+2%", chance: 4 },
+          { value: "+3%", chance: 2 }
+        ]
+      },
+      {
+        name: "Protect Fire",
+        levels: [
+          { value: "+1%", chance: 6 },
+          { value: "+2%", chance: 4 },
+          { value: "+3%", chance: 2 }
+        ]
+      },
+      {
+        name: "Protect Physical",
+        levels: [
+          { value: "+1%", chance: 6 },
+          { value: "+2%", chance: 4 },
+          { value: "+3%", chance: 2 }
+        ]
+      },
+      {
+        name: "Speed",
+        levels: [
+          { value: "+10", chance: 6 },
+          { value: "+15", chance: 4 },
+          { value: "+20", chance: 2 }
+        ]
+      },
+      {
+        name: "Vibrancy",
+        levels: [
+          { value: "+5%", chance: 6 },
+          { value: "+10%", chance: 4 },
+          { value: "+15%", chance: 2 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "boots-of-haste",
+    name: "Boots of Haste",
+    tier: 2,
+    tipe: "Boots",
+    image: "assets/boots-of-haste.png",
+    attributes: [
+      {
+        name: "Armor",
+        levels: [
+          { value: "+1", chance: 10 },
+          { value: "+2", chance: 8 }
+        ]
+      },
+      {
+        name: "Dodge",
+        levels: [
+          { value: "+1%", chance: 6 },
+          { value: "+2%", chance: 4 }
+        ]
+      },
+      {
+        name: "Speed",
+        levels: [
+          { value: "+10", chance: 6 },
+          { value: "+15", chance: 4 }
+        ]
+      },
+      {
+        name: "Vibrancy",
+        levels: [
+          { value: "+5%", chance: 6 },
+          { value: "+10%", chance: 4 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "bunnyslippers",
+    name: "Bunnyslippers",
+    tier: 2,
+    tipe: "Boots",
+    image: "assets/bunnyslippers.png",
+    attributes: [
+      {
+        name: "Armor",
+        levels: [
+          { value: "+1", chance: 10 },
+          { value: "+2", chance: 8 }
+        ]
+      },
+      {
+        name: "Health Regen",
+        levels: [
+          { value: "+1/8s", chance: 6 },
+          { value: "+1/7.5s", chance: 4 }
+        ]
+      },
+      {
+        name: "Magic Level",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 }
+        ]
+      },
+      {
+        name: "Mana Regen",
+        levels: [
+          { value: "+1/24s", chance: 6 },
+          { value: "+1/22s", chance: 4 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "steel-boots",
+    name: "Steel Boots",
+    tier: 2,
+    tipe: "Boots",
+    image: "assets/steel-boots.png",
+    attributes: [
+      {
+        name: "Armor",
+        levels: [
+          { value: "+1", chance: 10 },
+          { value: "+2", chance: 8 }
+        ]
+      },
+      {
+        name: "Protect Fire",
+        levels: [
+          { value: "+1%", chance: 6 },
+          { value: "+2%", chance: 4 }
+        ]
+      },
+      {
+        name: "Protect Physical",
+        levels: [
+          { value: "+1%", chance: 6 },
+          { value: "+2%", chance: 4 }
+        ]
+      },
+      {
+        name: "Vibrancy",
+        levels: [
+          { value: "+5%", chance: 6 },
+          { value: "+10%", chance: 4 }
+        ]
+      }
+    ]
+  }
 
 ];
 
