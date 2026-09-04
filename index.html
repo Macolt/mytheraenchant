@@ -71,13 +71,13 @@
           <span class="r-val" id="rValAttr">---</span>
         </div>
       </div>
-      <div class="roulette-line" id="rLineTier">
-        <span class="r-label" data-i18n="rTierLabel">Tier / Valor</span>
-        <span class="r-val" id="rValTier">---</span>
+      <div class="roulette-line" id="rLineTierAmount">
+        <span class="r-label" id="rLabelAmountText" data-i18n="rTierLabel">Tier / Valor</span>
+        <span class="r-val" id="rValTierAmount">---</span>
       </div>
-      <div class="roulette-line" id="rLineExtra" style="display: none;">
-        <span class="r-label" data-i18n="rExtraLabel">Chance Extra</span>
-        <span class="r-val" id="rValExtra">---</span>
+      <div class="roulette-line" id="rLineTierChance" style="display: none;">
+        <span class="r-label" data-i18n="rChanceTierLabel">Tier (Chance)</span>
+        <span class="r-val" id="rValTierChance">---</span>
       </div>
       <div class="roulette-line" id="rLineSuccess">
         <span class="r-label" data-i18n="rSuccessLabel">Taxa de Sucesso</span>
@@ -176,8 +176,7 @@
 <script src="item-config.js"></script>
 
 <script>
-// MAPA DE IMAGENS PARA CADA TIPO DE ATRIBUTO (Aloque os caminhos corretos das imagens aqui)
-
+// MAPA DE IMAGENS PARA CADA TIPO DE ATRIBUTO
 const ATTR_ICONS = {
   'Attack': 'assets/attack.png',
   'Critical Hit': 'assets/critical.png',
@@ -190,7 +189,6 @@ const ATTR_ICONS = {
   'Weight': 'assets/weight.png',
   'Magic Level': 'assets/magiclevel.png'
 };
-
 
 const I18N = {
   'pt-BR': {
@@ -205,7 +203,7 @@ const I18N = {
     possibleAttrsTitle: 'Atributos Possíveis',
     shareSuccess: '📋 Item copiado para a área de transferência!',
     enchantingTitle: 'Encantando Item...', enchantingSub: 'Sorteando propriedades em etapas',
-    rAttrLabel: 'Atributo', rTierLabel: 'Tier / Valor', rExtraLabel: 'Chance Extra', rSuccessLabel: 'Taxa de Sucesso',
+    rAttrLabel: 'Atributo', rTierLabel: 'Tier / Valor', rChanceTierLabel: 'Tier (Chance)', rSuccessLabel: 'Taxa de Sucesso', rTierAmountLabel: 'Tier / Amount',
     ore:{Copper:'Cobre',Silver:'Prata',Gold:'Ouro',Obsidian:'Obsidiana',Hell:'Inferno'},
     attr:{Attack:'Ataque','Critical Hit':'Acerto Crítico',Defense:'Defesa','Life Leech':'Roubo de Vida','Sword Fighting':'Sword Fighting',Weight:'Peso'}
   },
@@ -221,7 +219,7 @@ const I18N = {
     possibleAttrsTitle: 'Possible Attributes',
     shareSuccess: '📋 Item copied to clipboard!',
     enchantingTitle: 'Enchanting Item...', enchantingSub: 'Rolling properties step by step',
-    rAttrLabel: 'Attribute', rTierLabel: 'Tier / Value', rExtraLabel: 'Extra Chance', rSuccessLabel: 'Success Rate',
+    rAttrLabel: 'Attribute', rTierLabel: 'Tier / Value', rChanceTierLabel: 'Tier (Chance)', rSuccessLabel: 'Success Rate', rTierAmountLabel: 'Tier / Amount',
     ore:{Copper:'Copper',Silver:'Silver',Gold:'Gold',Obsidian:'Obsidian',Hell:'Hell'},
     attr:{Attack:'Attack','Critical Hit':'Critical Hit',Defense:'Defense','Life Leech':'Life Leech','Sword Fighting':'Sword Fighting',Weight:'Weight'}
   },
@@ -237,7 +235,7 @@ const I18N = {
     possibleAttrsTitle: 'Możliwe atrybuty',
     shareSuccess: '📋 Przedmiot skopiowany do schowka!',
     enchantingTitle: 'Zaklinanie przedmiotu...', enchantingSub: 'Losowanie właściwości krok po kroku',
-    rAttrLabel: 'Atrybut', rTierLabel: 'Tier / Wartość', rExtraLabel: 'Dodatkowa szansa', rSuccessLabel: 'Szansa sukcesu',
+    rAttrLabel: 'Atrybut', rTierLabel: 'Tier / Wartość', rChanceTierLabel: 'Tier (Szansa)', rSuccessLabel: 'Szansa sukcesu', rTierAmountLabel: 'Tier / Amount',
     ore:{Copper:'Miedź',Silver:'Srebro',Gold:'Złoto',Obsidian:'Obsydian',Hell:'Piekło'},
     attr:{Attack:'Atak','Critical Hit':'Trafienie krytyczne',Defense:'Obrona','Life Leech':'Kradzież życia','Sword Fighting':'Walka mieczem',Weight:'Waga'}
   }
@@ -321,19 +319,37 @@ function setResult(cls,big,detail){$('result').className='result '+cls;$('result
 
 function rollResult(available){
  const attribute = randomItem(available);
- const levelIndex = Math.floor(Math.random() * attribute.levels.length);
- const level = attribute.levels[levelIndex];
- const finalChance = level.enchant !== undefined ? level.enchant : (level.chance || 0);
+ 
+ // 1. Roll do tier/amount (valor principal exibido)
+ const amountLevelIndex = Math.floor(Math.random() * attribute.levels.length);
+ const amountLevel = attribute.levels[amountLevelIndex];
+ 
+ let chanceLevelIndex = amountLevelIndex;
+ let chanceLevel = amountLevel;
+ 
+ // Se for atributo composto com hasChanceCol, rola separadamente o tier da chance
+ if (attribute.hasChanceCol) {
+   chanceLevelIndex = Math.floor(Math.random() * attribute.levels.length);
+   chanceLevel = attribute.levels[chanceLevelIndex];
+ }
+
+ // Extrai as taxas de sucesso de cada parte (usadas APENAS para cálculo)
+ const amountEnchantChance = amountLevel.enchant !== undefined ? amountLevel.enchant : (amountLevel.chance || 0);
+ const chanceChcChance = chanceLevel.enchant !== undefined ? chanceLevel.enchant : (chanceLevel.chance || 0);
+
+ // Pega a MAIOR porcentagem entre os dois para o roll final de sucesso/fracasso
+ const finalChance = Math.max(amountEnchantChance, chanceChcChance);
  const success = Math.random() * 100 < finalChance;
  
  return {
    success,
    attribute,
-   value: level.value,
-   tier: `T${levelIndex + 1}`,
+   value: amountLevel.value,          // Ex: chanceAmt principal (ex: 3%)
+   chanceVal: chanceLevel.chanceAmt,  // Segundo valor de chanceAmt (se houver no tier sorteado)
+   tier: `T${amountLevelIndex + 1}`,
    chance: finalChance,
    hasChanceCol: !!attribute.hasChanceCol,
-   chanceChc: level.chanceChc
+   chanceTier: `T${chanceLevelIndex + 1}`
  };
 }
 
@@ -360,15 +376,19 @@ function render(){
  $('itemSubtitle').textContent=`${t('tier')} ${selectedItem.tier} • ${selectedItem.tier} ${selectedItem.tier===1?t('slotsOne'):t('slotsMany')} • ${selectedItem.attributes.length} ${t('possible')}`;
  
  $('slots').innerHTML=Array.from({length:selectedItem.tier},(_,i)=>`<span class="slot ${i<current.length?'filled':''}"></span>`).join('');
+ 
+ // Renderização dos atributos aplicados (exibindo ambos os chanceAmt se houver hasChanceCol)
  $('attrs').innerHTML=current.length?current.map(a=>{
    const iconImg = ATTR_ICONS[a.name] ? `<img src="${ATTR_ICONS[a.name]}" style="width:16px;height:16px;vertical-align:middle;margin-right:5px;">` : '';
-   return `<div class="attr"><span>${iconImg}<b>${trAttr(a.name)}</b> · ${a.tier}</span><small>${a.value}</small></div>`;
+   const tierDisplay = a.hasChanceCol && a.chanceTier ? `${a.tier} / ${a.chanceTier}` : a.tier;
+   const valDisplay = a.hasChanceCol && a.chanceVal !== undefined ? `${a.value} / ${a.chanceVal}` : a.value;
+   return `<div class="attr"><span>${iconImg}<b>${trAttr(a.name)}</b> · ${tierDisplay}</span><small>${valDisplay}</small></div>`;
  }).join(''):`<div class="attr empty">${t('none')}</div>`;
  
  const possibleHtml = selectedItem.attributes.map(a => {
    let vals = '';
    if(a.hasChanceCol) {
-     vals = a.levels.map(l => `${l.value} / +${l.chanceChc}%`).join(' | ');
+     vals = a.levels.map(l => `${l.value} / ${l.chanceAmt}`).join(' | ');
    } else {
      vals = a.levels.map(l => l.value).join(' / ');
    }
@@ -383,11 +403,19 @@ function render(){
  $('filledSlots').textContent=`${current.length}/${selectedItem.tier}`;
  const successes=history.filter(h=>h.success).length, fails=history.length-successes;
  $('successes').textContent=successes;$('fails').textContent=fails;$('successRate').textContent=history.length?((successes/history.length)*100).toFixed(1)+'%':'0%';
- $('history').innerHTML=history.length?history.slice().reverse().map((h,i)=>h.success?`<div class="row"><span>${interpolate(t('successResult'),{attribute:trAttr(h.attribute.name),value:h.value})} · ${h.tier}</span><span>#${history.length-i}</span></div>`:`<div class="row fail-row"><span>❌ ${language==='en'?'Failed':language==='pl'?'Nieudane':'Falhou'} — ${trAttr(h.attribute.name)} (${h.tier}) (${h.chance}%)</span><span>#${history.length-i}</span></div>`).join(''):`<div class="row"><span>${t('noAttempts')}</span><span>—</span></div>`;
+ 
+ // Histórico atualizado exibindo ambos os valores quando houver hasChanceCol
+ $('history').innerHTML=history.length?history.slice().reverse().map((h,i)=>{
+   const tierText = h.hasChanceCol && h.chanceTier ? `${h.tier} / ${h.chanceTier}` : h.tier;
+   const valText = h.hasChanceCol && h.chanceVal !== undefined ? `${h.value} / ${h.chanceVal}` : h.value;
+   return h.success?
+     `<div class="row"><span>✨ ${trAttr(h.attribute.name)} ${valText} · ${tierText}</span><span>#${history.length-i}</span></div>`:
+     `<div class="row fail-row"><span>❌ ${language==='en'?'Failed':language==='pl'?'Nieudane':'Falhou'} — ${trAttr(h.attribute.name)} (${tierText}) (${h.chance}%)</span><span>#${history.length-i}</span></div>`;
+ }).join(''):`<div class="row"><span>${t('noAttempts')}</span><span>—</span></div>`;
 }
 function renderOres(){ $('ores').innerHTML=CONFIG.ores.map(o=>`<div class="ore-row"><img class="ore-icon" src="${o.image}" alt="${I18N[language].ore[o.name]||o.name}"><span class="ore-name">${I18N[language].ore[o.name]||o.name}</span><span class="ore-coins">${o.coins} DC</span></div>`).join(''); }
 
-// SISTEMA DE ENCHANT COM VELOCIDADE SELECIONÁVEL
+// SISTEMA DE ENCHANT COM VELOCIDADE SELECIONÁVEL E FLUXO CORRIGIDO
 function enchant(){
  if(isEnchanting || current.length>=selectedItem.tier||!selectedItem.attributes.length)return;
  const available=selectedItem.attributes.filter(a=>!current.some(x=>x.name===a.name));
@@ -400,45 +428,54 @@ function enchant(){
 
  const modal = $('enchantModal');
  const lineAttr = $('rLineAttr');
- const lineTier = $('rLineTier');
- const lineExtra = $('rLineExtra');
+ const lineTierAmount = $('rLineTierAmount');
+ const lineTierChance = $('rLineTierChance');
  const lineSuccess = $('rLineSuccess');
 
  const valAttr = $('rValAttr');
  const iconAttr = $('rIconAttr');
- const valTier = $('rValTier');
- const valExtra = $('rValExtra');
+ const valTierAmount = $('rValTierAmount');
+ const valTierChance = $('rValTierChance');
  const valSuccess = $('rValSuccess');
 
- // MODO INSTANTÂNEO (Sem animação, direto ao resultado)
+ // MODO INSTANTÂNEO
  if(speedMode === 'instant') {
-   history.push({success:result.success,attribute:result.attribute,value:result.value,tier:result.tier,chance:result.chance});
+   history.push({success:result.success,attribute:result.attribute,value:result.value,chanceVal:result.chanceVal,tier:result.tier,chance:result.chance,hasChanceCol:result.hasChanceCol,chanceTier:result.chanceTier});
    if(!result.success){
      playSound('fail');
-     setResult('fail',t('failResult'),interpolate(t('failDetail'),{attribute:trAttr(result.attribute.name),tier:result.tier,chance:result.chance}));
+     const tierText = result.hasChanceCol ? `${result.tier} / ${result.chanceTier}` : result.tier;
+     setResult('fail',t('failResult'),interpolate(t('failDetail'),{attribute:trAttr(result.attribute.name),tier:tierText,chance:result.chance}));
    } else {
      playSound('success');
-     current.push({name:result.attribute.name,value:result.value,tier:result.tier});
-     setResult('success',interpolate(t('successResult'),{attribute:trAttr(result.attribute.name),value:result.value}),interpolate(t('successDetail'),{tier:result.tier,chance:result.chance}));
+     current.push({name:result.attribute.name,value:result.value,chanceVal:result.chanceVal,tier:result.tier,hasChanceCol:result.hasChanceCol,chanceTier:result.chanceTier});
+     const valTextDisp = result.hasChanceCol && result.chanceVal !== undefined ? `${result.value} / ${result.chanceVal}` : result.value;
+     const tierText = result.hasChanceCol ? `${result.tier} / ${result.chanceTier}` : result.tier;
+     setResult('success',interpolate(t('successResult'),{attribute:trAttr(result.attribute.name),value:valTextDisp}),interpolate(t('successDetail'),{tier:tierText,chance:result.chance}));
    }
    render();
    isEnchanting = false;
    return;
  }
 
- // MODOS COM ANIMAÇÃO (1x é mais lento, 2x é o anterior)
+ // MODOS COM ANIMAÇÃO
  modal.classList.add('active');
- [lineAttr, lineTier, lineExtra, lineSuccess].forEach(l => l.className = 'roulette-line');
+ [lineAttr, lineTierAmount, lineTierChance, lineSuccess].forEach(l => l.className = 'roulette-line');
 
- if(result.hasChanceCol) { lineExtra.style.display = 'flex'; } else { lineExtra.style.display = 'none'; }
+ if(result.hasChanceCol) { 
+   lineTierChance.style.display = 'flex'; 
+   $('rLabelAmountText').textContent = t('rTierAmountLabel');
+ } else { 
+   lineTierChance.style.display = 'none'; 
+   $('rLabelAmountText').textContent = t('rTierLabel');
+ }
 
- const baseInterval = speedMode === '1x' ? 140 : 70; // 1x dobra o tempo de cada pulo
+ const baseInterval = speedMode === '1x' ? 140 : 70;
 
  lineAttr.classList.add('active-line');
  valAttr.textContent = '...';
  iconAttr.style.display = 'none';
- valTier.textContent = '---';
- valExtra.textContent = '---';
+ valTierAmount.textContent = '---';
+ valTierChance.textContent = '---';
  valSuccess.textContent = '---';
 
  let counterAttr = 0;
@@ -463,32 +500,34 @@ function enchant(){
      }
      lineAttr.classList.remove('active-line');
      
-     // ETAPA 2
-     lineTier.classList.add('active-line');
+     // ETAPA 2: Roll do Tier/Amount (valor principal)
+     lineTierAmount.classList.add('active-line');
      let counterTier = 0;
      const rollTierInterval = setInterval(() => {
        counterTier++;
        playSound('tick');
        const dummyLvl = randomItem(result.attribute.levels);
-       valTier.textContent = `${dummyLvl.value} (${result.tier.slice(0,1)}...?)`;
+       valTierAmount.textContent = `${dummyLvl.value} (T...)`;
 
        if(counterTier >= 8) {
          clearInterval(rollTierInterval);
-         valTier.textContent = `${result.value} (${result.tier})`;
-         lineTier.classList.remove('active-line');
+         const displayValModal = result.hasChanceCol && result.chanceVal !== undefined ? `${result.value} / ${result.chanceVal}` : result.value;
+         valTierAmount.textContent = `${displayValModal} (${result.tier})`;
+         lineTierAmount.classList.remove('active-line');
 
+         // ETAPA 3 (Se houver coluna de chance): Roll separado do Tier de Chance
          if(result.hasChanceCol) {
-           lineExtra.classList.add('active-line');
-           let counterExtra = 0;
-           const rollExtraInterval = setInterval(() => {
-             counterExtra++;
+           lineTierChance.classList.add('active-line');
+           let counterChance = 0;
+           const rollChanceInterval = setInterval(() => {
+             counterChance++;
              playSound('tick');
-             valExtra.textContent = `+${Math.floor(Math.random()*15)+1}%`;
+             valTierChance.textContent = `T...`;
 
-             if(counterExtra >= 8) {
-               clearInterval(rollExtraInterval);
-               valExtra.textContent = `+${result.chanceChc}%`;
-               lineExtra.classList.remove('active-line');
+             if(counterChance >= 8) {
+               clearInterval(rollChanceInterval);
+               valTierChance.textContent = `${result.chanceTier}`;
+               lineTierChance.classList.remove('active-line');
                startSuccessRoll();
              }
            }, baseInterval);
@@ -524,12 +563,14 @@ function enchant(){
        const closeDelay = speedMode === '1x' ? 1200 : 700;
        setTimeout(() => {
          modal.classList.remove('active');
-         history.push({success:result.success,attribute:result.attribute,value:result.value,tier:result.tier,chance:result.chance});
+         history.push({success:result.success,attribute:result.attribute,value:result.value,chanceVal:result.chanceVal,tier:result.tier,chance:result.chance,hasChanceCol:result.hasChanceCol,chanceTier:result.chanceTier});
+         const tierText = result.hasChanceCol ? `${result.tier} / ${result.chanceTier}` : result.tier;
          if(!result.success){
-           setResult('fail',t('failResult'),interpolate(t('failDetail'),{attribute:trAttr(result.attribute.name),tier:result.tier,chance:result.chance}));
+           setResult('fail',t('failResult'),interpolate(t('failDetail'),{attribute:trAttr(result.attribute.name),tier:tierText,chance:result.chance}));
          } else {
-           current.push({name:result.attribute.name,value:result.value,tier:result.tier});
-           setResult('success',interpolate(t('successResult'),{attribute:trAttr(result.attribute.name),value:result.value}),interpolate(t('successDetail'),{tier:result.tier,chance:result.chance}));
+           current.push({name:result.attribute.name,value:result.value,chanceVal:result.chanceVal,tier:result.tier,hasChanceCol:result.hasChanceCol,chanceTier:result.chanceTier});
+           const valTextDisp = result.hasChanceCol && result.chanceVal !== undefined ? `${result.value} / ${result.chanceVal}` : result.value;
+           setResult('success',interpolate(t('successResult'),{attribute:trAttr(result.attribute.name),value:valTextDisp}),interpolate(t('successDetail'),{tier:tierText,chance:result.chance}));
          }
          render();
          isEnchanting = false;
@@ -544,7 +585,11 @@ function changeItem(){const id=$('itemSelect').value;selectedItem=ITEMS.find(i=>
 
 function shareItem(){
  const attrsText = current.length > 0 
-   ? current.map(a => `• ${trAttr(a.name)} (${a.tier}): ${a.value}`).join('\n') 
+   ? current.map(a => {
+       const tierText = a.hasChanceCol && a.chanceTier ? `${a.tier} / ${a.chanceTier}` : a.tier;
+       const valText = a.hasChanceCol && a.chanceVal !== undefined ? `${a.value} / ${a.chanceVal}` : a.value;
+       return `• ${trAttr(a.name)} (${tierText}): ${valText}`;
+     }).join('\n') 
    : `• ${t('none')}`;
  
  const successes = history.filter(h=>h.success).length;
