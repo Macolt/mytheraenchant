@@ -9,18 +9,84 @@
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -10%,#202735 0,#0b0e14 48%,#07090d 100%);color:var(--text);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;min-height:100vh}
 .wrap{max-width:1280px;margin:0 auto;padding:26px 18px 50px}.title{text-align:center;margin-bottom:20px}.title h1{margin:0;font-size:30px;letter-spacing:.5px}.title p{color:var(--muted);margin:7px 0 0}
 .toolbar{display:flex;justify-content:center;align-items:center;gap:12px;margin-bottom:18px}.lang-wrap{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px}.lang-wrap select{background:#11151d;color:var(--text);border:1px solid var(--line);border-radius:7px;padding:10px 32px 10px 10px;font-weight:700}.select-wrap{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px}.select-wrap select{background:#11151d;color:var(--text);border:1px solid var(--line);border-radius:7px;padding:10px 38px 10px 12px;font-weight:700;min-width:230px}
-.grid{display:grid;grid-template-columns:330px minmax(420px,1fr) 285px;gap:16px;align-items:start}.card{background:linear-gradient(180deg,#141923,#0f131b);border:1px solid var(--line);border-radius:10px;box-shadow:0 14px 40px #0008}.item{padding:20px;display:flex;flex-direction:column;align-items:center}.orb{width:170px;height:170px;border-radius:50%;margin:8px 0 17px;background:radial-gradient(circle,#354155 0,#1d2533 42%,#0d1118 70%);border:1px solid #46536a;display:grid;place-items:center;box-shadow:inset 0 0 35px #000,0 0 35px #0008;overflow:hidden}.orb img{width:115px;height:115px;object-fit:contain;image-rendering:auto;filter:drop-shadow(0 4px 8px #000)}.item h2{margin:0;font-size:23px;text-align:center}.subtitle{color:var(--muted);font-size:13px;margin-top:5px;text-align:center}.slots{display:flex;gap:6px;margin-top:12px}.slot{width:10px;height:10px;border-radius:50%;background:#303948;border:1px solid #4b5669}.slot.filled{background:var(--good);border-color:#77e7a4;box-shadow:0 0 7px #55d18a55}.attrs{width:100%;margin-top:18px}.attr{display:flex;justify-content:space-between;align-items:center;padding:9px 11px;background:#0c1016;border:1px solid #202837;border-radius:7px;margin-top:7px;font-size:13px}.attr small{color:var(--muted)}.empty{color:#596475;font-style:italic}
-.possible-box{width:100%;margin-top:22px;border-top:1px solid var(--line);padding-top:16px}.possible-box h3{font-size:13px;color:var(--muted);margin:0 0 10px;text-align:center}.p-attr{background:#0c1016;border:1px solid #202837;border-radius:6px;padding:7px 9px;margin-bottom:6px;font-size:12px;display:flex;justify-content:space-between;align-items:center}.p-attr-name{font-weight:700;color:var(--text)}.p-attr-vals{color:var(--muted);font-size:11px}
-.controls{padding:18px;display:flex;flex-direction:column}.topline{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}.topline h2,.side h2{margin:0;font-size:18px}.stones{font-weight:800;color:var(--gold);background:#0b0e14;border:1px solid #343b49;padding:7px 11px;border-radius:7px}.result{min-height:150px;border:1px dashed #394456;border-radius:9px;background:#0b0e13;display:grid;place-items:center;text-align:center;padding:16px;margin-bottom:12px}.result .big{font-size:23px;font-weight:800}.result .detail{color:var(--muted);margin-top:6px;line-height:1.45}.result.fail .big{color:#d0d5df}.result.success .big{color:var(--good)}.buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}.btn{border:0;border-radius:7px;padding:12px 14px;font-weight:800;cursor:pointer;color:white;background:#242c3a}.btn:hover{filter:brightness(1.12)}.btn.enchant{background:#9f3030}.btn.share{grid-column:1/-1;background:#2b5278;margin-bottom:15px}.btn:disabled{opacity:.45;cursor:not-allowed}
+.grid{display:grid;grid-template-columns:330px minmax(420px,1fr) 285px;gap:16px;align-items:start}.card{background:linear-gradient(180deg,#141923,#0f131b);border:1px solid var(--line);border-radius:10px;box-shadow:0 14px 40px #0008}
+.item{padding:20px;display:flex;flex-direction:column;align-items:center}.orb{width:170px;height:170px;border-radius:50%;margin:8px 0 17px;background:radial-gradient(circle,#354155 0,#1d2533 42%,#0d1118 70%);border:1px solid #46536a;display:grid;place-items:center;box-shadow:inset 0 0 35px #000,0 0 35px #0008;overflow:hidden}.orb img{width:115px;height:115px;object-fit:contain;image-rendering:auto;filter:drop-shadow(0 4px 8px #000)}.item h2{margin:0;font-size:23px;text-align:center}.subtitle{color:var(--muted);font-size:13px;margin-top:5px;text-align:center}.slots{display:flex;gap:6px;margin-top:12px}.slot{width:10px;height:10px;border-radius:50%;background:#303948;border:1px solid #4b5669}.slot.filled{background:var(--good);border-color:#77e7a4;box-shadow:0 0 7px #55d18a55}.attrs{width:100%;margin-top:18px}.attr{display:flex;justify-content:space-between;align-items:center;padding:9px 11px;background:#0c1016;border:1px solid #202837;border-radius:7px;margin-top:7px;font-size:13px}.attr small{color:var(--muted)}.empty{color:#596475;font-style:italic}
+.possible-box{width:100%;margin-top:22px;border-top:1px solid var(--line);padding-top:16px}.possible-box h3{font-size:13px;color:var(--muted);margin:0 0 10px;text-align:center}.p-attr{background:#0c1016;border:1px solid #202837;border-radius:6px;padding:7px 9px;margin-bottom:6px;font-size:12px;display:flex;justify-content:space-between;align-items:center}.p-attr-left{display:flex;align-items:center;gap:7px}.p-attr-icon{width:16px;height:16px;object-fit:contain}.p-attr-name{font-weight:700;color:var(--text)}.p-attr-vals{color:var(--muted);font-size:11px}
+.controls{padding:18px;display:flex;flex-direction:column}.topline{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}.topline h2,.side h2{margin:0;font-size:18px}.stones{font-weight:800;color:var(--gold);background:#0b0e14;border:1px solid #343b49;padding:7px 11px;border-radius:7px}
+.settings-bar{display:flex;justify-content:space-between;align-items:center;background:#0c1016;border:1px solid #202837;border-radius:7px;padding:6px 10px;margin-bottom:12px;font-size:12px;color:var(--muted)}
+.settings-bar select{background:#171c26;color:var(--text);border:1px solid var(--line);border-radius:5px;padding:4px 8px;font-weight:600}
+.icon-btn{background:transparent;border:1px solid var(--line);border-radius:5px;color:var(--text);cursor:pointer;padding:4px 8px;font-size:14px}
+.icon-btn:hover{background:var(--line)}
+.result{min-height:150px;border:1px dashed #394456;border-radius:9px;background:#0b0e13;display:grid;place-items:center;text-align:center;padding:16px;margin-bottom:12px}.result .big{font-size:23px;font-weight:800}.result .detail{color:var(--muted);margin-top:6px;line-height:1.45}.result.fail .big{color:#d0d5df}.result.success .big{color:#55d18a}
+.buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}.btn{border:0;border-radius:7px;padding:12px 14px;font-weight:800;cursor:pointer;color:white;background:#242c3a}.btn:hover{filter:brightness(1.12)}.btn.enchant{background:#9f3030}.btn.share{grid-column:1/-1;background:#2b5278;margin-bottom:15px}.btn:disabled{opacity:.45;cursor:not-allowed}
 .history{display:flex;flex-direction:column;flex-grow:1}.history h3{font-size:13px;color:var(--muted);margin:0 0 7px}.hist{flex-grow:1;max-height:none;min-height:220px;overflow-y:auto;background:#0c1016;border:1px solid #202837;border-radius:7px;padding:4px}
 .row{display:flex;justify-content:space-between;gap:10px;padding:8px 9px;border-bottom:1px solid #202735;font-size:12px}.row:last-child{border-bottom:none}.row span:last-child{color:#7f8a9b;white-space:nowrap}.row.fail-row span:first-child{color:#aeb6c4}
-.side{padding:18px}.cost-box{margin-top:12px;border:1px solid #202837;border-radius:8px;background:#0c1016;overflow:hidden}.cost-row{display:grid;grid-template-columns:32px 1fr auto;align-items:center;gap:8px;padding:7px 8px;border-bottom:1px solid #202837;font-size:13px}.cost-row:first-child{border-radius:7px 7px 0 0}.cost-row:last-child{border-bottom:0;border-radius:0 0 7px 7px}.cost-icon{width:28px;height:28px;object-fit:contain}.cost-row .label{color:var(--muted)}.cost-row strong{font-size:15px}.gold-value{color:var(--gold)}.coin-value{color:#d6dbe5}.ores{margin-top:18px}.ores h3{font-size:13px;color:var(--muted);margin:0 0 8px}.ore-row{display:grid;grid-template-columns:32px 1fr auto;align-items:center;gap:8px;padding:7px 8px;background:#0c1016;border:1px solid #202837;border-bottom:0;font-size:12px}.ore-row:first-of-type{border-radius:7px 7px 0 0}.ore-row:last-child{border-bottom:1px solid #202837;border-radius:0 0 7px 7px}.ore-icon{width:28px;height:28px;object-fit:contain}.ore-name{color:var(--text)}.ore-coins{color:var(--gold);font-weight:800}.stats{margin-top:18px}.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}.stat{background:#0c1016;border:1px solid #202837;border-radius:7px;padding:9px}.stat small{display:block;color:var(--muted);font-size:10px}.stat strong{font-size:15px}.support-box{margin-top:18px;background:#0c1016;border:1px solid #202837;border-radius:8px;padding:11px}.support-box h3{font-size:13px;color:var(--muted);margin:0 0 8px}.support-item{font-size:12px;margin-bottom:6px;color:var(--text);line-height:1.4}.support-item:last-child{margin-bottom:0}.support-item b{color:var(--gold)}
-@media(max-width:1050px){.grid{grid-template-columns:300px 1fr}.side{grid-column:1/-1}.stats-grid{grid-template-columns:repeat(4,1fr)}}
-@media(max-width:850px){.toolbar{flex-wrap:wrap;}}
-@media(max-width:720px){.grid{grid-template-columns:1fr}.side{grid-column:auto}.toolbar{justify-content:stretch}.select-wrap{width:100%;flex-direction:column;align-items:stretch}.select-wrap select{width:100%}.buttons{grid-template-columns:1fr}.stats-grid{grid-template-columns:1fr 1fr}}
+.side{padding:18px}.cost-box{margin-top:12px;border:1px solid #202837;border-radius:8px;background:#0c1016;overflow:hidden}.cost-row{display:grid;grid-template-columns:32px 1fr auto;align-items:center;gap:8px;padding:7px 8px;border-bottom:1px solid #202837;font-size:13px}.cost-row:first-child{border-radius:7px 7px 0 0}.cost-row:last-child{border-bottom:0;border-radius:0 0 7px 7px}.cost-icon{width:28px;height:28px;object-fit:contain}.cost-row .label{color:var(--muted)}.cost-row strong{font-size:15px}.gold-value{color:#e6bd61}.coin-value{color:#d6dbe5}
+.ores{margin-top:18px}.ores h3{font-size:13px;color:var(--muted);margin:0 0 8px}.ore-row{display:grid;grid-template-columns:32px 1fr auto;align-items:center;gap:8px;padding:7px 8px;background:#0c1016;border:1px solid #202837;border-bottom:0;font-size:12px}.ore-row:first-of-type{border-radius:7px 7px 0 0}.ore-row:last-child{border-bottom:1px solid #202837;border-radius:0 0 7px 7px}.ore-icon{width:28px;height:28px;object-fit:contain}.ore-name{color:var(--text)}.ore-coins{color:var(--gold);font-weight:800}
+.stats{margin-top:18px}.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}.stat{background:#0c1016;border:1px solid #202837;border-radius:7px;padding:9px}.stat small{display:block;color:var(--muted);font-size:10px}.stat strong{font-size:15px}
+.support-box{margin-top:18px;background:#0c1016;border:1px solid #202837;border-radius:8px;padding:11px}.support-box h3{font-size:13px;color:var(--muted);margin:0 0 8px}.support-item{font-size:12px;margin-bottom:6px;color:var(--text);line-height:1.4}.support-item:last-child{margin-bottom:0}.support-item b{color:var(--gold)}
+
+/* MODAL DE ANIMAÇÃO */
+.enchant-modal {
+  position: fixed; inset: 0; background: rgba(7, 9, 13, 0.88); backdrop-filter: blur(5px);
+  display: grid; place-items: center; z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.2s ease;
+}
+.enchant-modal.active { opacity: 1; pointer-events: auto; }
+.enchant-box {
+  background: linear-gradient(180deg, #18202e, #0e121a); border: 1px solid #34425a; border-radius: 12px;
+  padding: 24px; width: 440px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+}
+.enchant-box h3 { margin: 0 0 5px; font-size: 17px; color: var(--gold); letter-spacing: 0.5px; }
+.enchant-box p { margin: 0 0 18px; font-size: 12px; color: var(--muted); }
+
+.roulette-container { display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px; }
+.roulette-line {
+  background: #090b10; border: 1px solid #283347; border-radius: 8px; padding: 10px 14px;
+  display: flex; justify-content: space-between; align-items: center; min-height: 44px;
+  opacity: 0.4; transition: all 0.3s ease;
+}
+.roulette-line.active-line { opacity: 1; border-color: var(--gold); background: #121824; box-shadow: 0 0 10px rgba(230, 189, 97, 0.15); }
+.roulette-line.success-line { border-color: var(--good); background: #112218; box-shadow: 0 0 10px rgba(85, 209, 138, 0.2); }
+.roulette-line.fail-line { border-color: #8b3a3a; background: #261313; }
+
+.r-label { font-size: 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.r-val-group { display: flex; align-items: center; gap: 8px; }
+.r-icon { width: 20px; height: 20px; object-fit: contain; }
+.r-val { font-size: 15px; font-weight: 800; color: var(--text); }
 </style>
 </head>
 <body>
+
+<!-- MODAL DE ANIMAÇÃO -->
+<div class="enchant-modal" id="enchantModal">
+  <div class="enchant-box">
+    <h3 data-i18n="enchantingTitle">Encantando Item...</h3>
+    <p data-i18n="enchantingSub">Sorteando propriedades em etapas</p>
+    
+    <div class="roulette-container" id="rouletteContainer">
+      <div class="roulette-line active-line" id="rLineAttr">
+        <span class="r-label" data-i18n="rAttrLabel">Atributo</span>
+        <div class="r-val-group">
+          <img class="r-icon" id="rIconAttr" src="" alt="" style="display:none;">
+          <span class="r-val" id="rValAttr">---</span>
+        </div>
+      </div>
+      <div class="roulette-line" id="rLineTier">
+        <span class="r-label" data-i18n="rTierLabel">Tier / Valor</span>
+        <span class="r-val" id="rValTier">---</span>
+      </div>
+      <div class="roulette-line" id="rLineExtra" style="display: none;">
+        <span class="r-label" data-i18n="rExtraLabel">Chance Extra</span>
+        <span class="r-val" id="rValExtra">---</span>
+      </div>
+      <div class="roulette-line" id="rLineSuccess">
+        <span class="r-label" data-i18n="rSuccessLabel">Taxa de Sucesso</span>
+        <span class="r-val" id="rValSuccess">---</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="wrap">
  <div class="title"><h1>⚒ Mythera Enchantment Simulator</h1><p data-i18n="subtitle">Simulador de atributos para itens • Desenvolvido por <b>Macolt</b></p></div>
  <div class="toolbar">
@@ -48,6 +114,20 @@
   </section>
   <section class="card controls">
    <div class="topline"><h2 data-i18n="enchantment">Encantamento</h2><div class="stones"><span data-i18n="stones">Pedras</span>: <span id="stones">0</span></div></div>
+   
+   <!-- BARRA DE CONFIGURAÇÕES DE VELOCIDADE E SOM -->
+   <div class="settings-bar">
+     <div>
+       <span data-i18n="speedLabel">Velocidade:</span>
+       <select id="speedSelect">
+         <option value="2x">2x (Padrão Rápido)</option>
+         <option value="1x" selected>1x (Mais Lenta)</option>
+         <option value="instant">Instantâneo</option>
+       </select>
+     </div>
+     <button class="icon-btn" id="soundToggleBtn" title="Ativar/Desativar Som">🔊 Som</button>
+   </div>
+
    <div class="result" id="result"><div><div class="big" data-i18n="ready">Pronto para encantar</div><div class="detail" data-i18n="eachAttempt">Cada tentativa consome 1 pedra.</div></div></div>
    <div class="buttons">
     <button class="btn enchant" id="enchant" data-i18n="enchant">ENCANTAR</button>
@@ -96,49 +176,68 @@
 <script src="item-config.js"></script>
 
 <script>
+// MAPA DE IMAGENS PARA CADA TIPO DE ATRIBUTO (Aloque os caminhos corretos das imagens aqui)
+
+const ATTR_ICONS = {
+  'Attack': 'assets/attack.png',
+  'Critical Hit': 'assets/critical.png',
+  'Critical Spell': 'assets/critical_spell.png',
+  'Defense': 'assets/defense.png',
+  'Life Leech': 'assets/lifeleech.png',
+  'Mana Leech': 'assets/manaleech.png',
+  'Sword Fighting': 'assets/sword.png',
+  'Perfuration': 'assets/perfuration.png',
+  'Weight': 'assets/weight.png',
+  'Magic Level': 'assets/magiclevel.png'
+};
+
+
 const I18N = {
   'pt-BR': {
     htmlLang:'pt-BR', typeLabel:'Tipo', allTypes:'Todos os Tipos', itemLabel:'Item', languageLabel:'Idioma', tier:'Tier', subtitle:'Simulador de atributos para itens • Desenvolvido por <b>Macolt</b>',
     enchantment:'Encantamento', stones:'Pedras', ready:'Pronto para encantar', eachAttempt:'Cada tentativa consome 1 pedra.',
-    enchant:'ENCANTAR', reset:'LIMPAR / RESET', shareBtn:'📋 COMPARTILHAR ITEM', history:'Histórico', rules:'Regras:', flowTitle:'Fluxo de cada pedra:',
-    flowText:'1) escolhe aleatoriamente um atributo; 2) rola Tiers independentes para Amount e Chance (se houver); 3) usa o maior valor de Enchant (Math.max) como taxa de sucesso; 4) se falhar, nenhum atributo entra.',
+    enchant:'ENCANTAR', reset:'LIMPAR / RESET', shareBtn:'📋 COMPARTILHAR ITEM', history:'Histórico', speedLabel:'Velocidade:',
     costs:'Custos', stonesSpent:'Pedras gastas', gold:'Ouro', ores:'Barras de minério', stats:'Estatísticas', successes:'Sucessos', fails:'Falhas', slots:'Slots', rate:'Taxa',
     supportTitle:'Apoie o Desenvolvedor',
     slotsOne:'slot de atributo', slotsMany:'slots de atributos', possible:'atributos possíveis', none:'Nenhum atributo aplicado', noAttempts:'Nenhuma tentativa ainda.',
     successResult:'✨ {attribute} {value}', successDetail:'{tier} • Roll de sucesso em {chance}%', failResult:'💨 Encantamento falhou', failDetail:'{attribute} → {tier} ({chance}%) • Nenhum atributo foi aplicado. A pedra foi consumida.',
-    resetResult:'Pronto para encantar', resetDetail:'Cada tentativa consome 1 pedra.', noAttributes:'', blocked:'',
+    resetResult:'Pronto para encantar', resetDetail:'Cada tentativa consome 1 pedra.',
     possibleAttrsTitle: 'Atributos Possíveis',
     shareSuccess: '📋 Item copiado para a área de transferência!',
+    enchantingTitle: 'Encantando Item...', enchantingSub: 'Sorteando propriedades em etapas',
+    rAttrLabel: 'Atributo', rTierLabel: 'Tier / Valor', rExtraLabel: 'Chance Extra', rSuccessLabel: 'Taxa de Sucesso',
     ore:{Copper:'Cobre',Silver:'Prata',Gold:'Ouro',Obsidian:'Obsidiana',Hell:'Inferno'},
     attr:{Attack:'Ataque','Critical Hit':'Acerto Crítico',Defense:'Defesa','Life Leech':'Roubo de Vida','Sword Fighting':'Sword Fighting',Weight:'Peso'}
   },
   en: {
     htmlLang:'en', typeLabel:'Type', allTypes:'All Types', itemLabel:'Item', languageLabel:'Language', tier:'Tier', subtitle:'Attribute simulator for RPG items • Developed by <b>Macolt</b>',
     enchantment:'Enchantment', stones:'Stones', ready:'Ready to enchant', eachAttempt:'Each attempt consumes 1 stone.',
-    enchant:'ENCHANT', reset:'CLEAR / RESET', shareBtn:'📋 SHARE ITEM', history:'History', rules:'Rules:', flowTitle:'Flow for each stone:',
-    flowText:'1) randomly chooses an attribute; 2) rolls independent Tiers for Amount and Chance; 3) uses the highest enchant chance via Math.max; 4) on failure, no attribute is applied.',
+    enchant:'ENCHANT', reset:'CLEAR / RESET', shareBtn:'📋 SHARE ITEM', history:'History', speedLabel:'Speed:',
     costs:'Costs', stonesSpent:'Stones spent', gold:'Gold', ores:'Ore bars', stats:'Statistics', successes:'Successes', fails:'Failures', slots:'Slots', rate:'Rate',
     supportTitle:'Support the Developer',
     slotsOne:'attribute slot', slotsMany:'attribute slots', possible:'possible attributes', none:'No attribute applied', noAttempts:'No attempts yet.',
     successResult:'✨ {attribute} {value}', successDetail:'{tier} • Success roll at {chance}%', failResult:'💨 Enchantment failed', failDetail:'{attribute} → {tier} ({chance}%) • No attribute was applied. The stone was consumed.',
-    resetResult:'Ready to enchant', resetDetail:'Each attempt consumes 1 stone.', noAttributes:'', blocked:'',
+    resetResult:'Ready to enchant', resetDetail:'Each attempt consumes 1 stone.',
     possibleAttrsTitle: 'Possible Attributes',
     shareSuccess: '📋 Item copied to clipboard!',
+    enchantingTitle: 'Enchanting Item...', enchantingSub: 'Rolling properties step by step',
+    rAttrLabel: 'Attribute', rTierLabel: 'Tier / Value', rExtraLabel: 'Extra Chance', rSuccessLabel: 'Success Rate',
     ore:{Copper:'Copper',Silver:'Silver',Gold:'Gold',Obsidian:'Obsidian',Hell:'Hell'},
     attr:{Attack:'Attack','Critical Hit':'Critical Hit',Defense:'Defense','Life Leech':'Life Leech','Sword Fighting':'Sword Fighting',Weight:'Weight'}
   },
   pl: {
     htmlLang:'pl', typeLabel:'Typ', allTypes:'Wszystkie typy', itemLabel:'Przedmiot', languageLabel:'Język', tier:'Tier', subtitle:'Symulator atrybutów dla przedmiotów RPG • Stworzony przez <b>Macolt</b>',
     enchantment:'Zaklinanie', stones:'Kamienie', ready:'Gotowy do zaklinania', eachAttempt:'Każda próba zużywa 1 kamień.',
-    enchant:'ZAKLIJ', reset:'WYCZYŚĆ / RESET', shareBtn:'📋 UDOSTĘPNIJ PRZEDMIOT', history:'Historia', rules:'Zasady:', flowTitle:'Przebieg każdego kamienia:',
-    flowText:'1) losuje atrybut; 2) losuje niezależne Tiery dla Amount i Chance; 3) używa najwyższej szansy zaklęcia poprzez Math.max; 4) przy porażce żaden atrybut nie zostaje dodany.',
+    enchant:'ZAKLIJ', reset:'WYCZYŚĆ / RESET', shareBtn:'📋 UDOSTĘPNIJ PRZEDMIOT', history:'Historia', speedLabel:'Prędkość:',
     costs:'Koszty', stonesSpent:'Zużyte kamienie', gold:'Złoto', ores:'Sztabki rudy', stats:'Statystyki', successes:'Sukcesy', fails:'Porażki', slots:'Sloty', rate:'Wskaźnik',
     supportTitle:'Wspomóż twórcę',
     slotsOne:'slot atrybutu', slotsMany:'sloty atrybutów', possible:'możliwe atrybuty', none:'Brak zastosowanego atrybutu', noAttempts:'Brak prób.',
     successResult:'✨ {attribute} {value}', successDetail:'{tier} • Rzut sukcesu przy {chance}%', failResult:'💨 Zaklinanie nieudane', failDetail:'{attribute} → {tier} ({chance}%) • Żaden atrybut nie został dodany. Kamień został zużyty.',
-    resetResult:'Gotowy do zaklinania', resetDetail:'Każda próba zużywa 1 kamień.', noAttributes:'', blocked:'',
+    resetResult:'Gotowy do zaklinania', resetDetail:'Każda próba zużywa 1 kamień.',
     possibleAttrsTitle: 'Możliwe atrybuty',
     shareSuccess: '📋 Przedmiot skopiowany do schowka!',
+    enchantingTitle: 'Zaklinanie przedmiotu...', enchantingSub: 'Losowanie właściwości krok po kroku',
+    rAttrLabel: 'Atrybut', rTierLabel: 'Tier / Wartość', rExtraLabel: 'Dodatkowa szansa', rSuccessLabel: 'Szansa sukcesu',
     ore:{Copper:'Miedź',Silver:'Srebro',Gold:'Złoto',Obsidian:'Obsydian',Hell:'Piekło'},
     attr:{Attack:'Atak','Critical Hit':'Trafienie krytyczne',Defense:'Obrona','Life Leech':'Kradzież życia','Sword Fighting':'Walka mieczem',Weight:'Waga'}
   }
@@ -154,26 +253,76 @@ function applyLanguage(){
  renderTypes(); renderItems(); renderOres(); render();
 }
 
+// SISTEMA DE ÁUDIO SINTÉTICO (Web Audio API)
+let soundEnabled = true;
+let audioCtx = null;
+function getAudioContext() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  if (audioCtx.state === 'suspended') {
+    audioCtx.resume();
+  }
+  return audioCtx;
+}
+
+function playSound(type) {
+  if (!soundEnabled) return;
+  try {
+    const ctx = getAudioContext();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    const now = ctx.currentTime;
+
+    if (type === 'tick') {
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(400, now);
+      osc.frequency.exponentialRampToValueAtTime(200, now + 0.04);
+      gain.gain.setValueAtTime(0.08, now);
+      gain.gain.linearRampToValueAtTime(0.01, now + 0.04);
+      osc.start(now);
+      osc.stop(now + 0.04);
+    } else if (type === 'success') {
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(523.25, now); // C5
+      osc.frequency.setValueAtTime(659.25, now + 0.08); // E5
+      osc.frequency.setValueAtTime(783.99, now + 0.16); // G5
+      osc.frequency.setValueAtTime(1046.50, now + 0.24); // C6
+      gain.gain.setValueAtTime(0.12, now);
+      gain.gain.linearRampToValueAtTime(0.01, now + 0.45);
+      osc.start(now);
+      osc.stop(now + 0.45);
+    } else if (type === 'fail') {
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(180, now);
+      osc.frequency.linearRampToValueAtTime(90, now + 0.3);
+      gain.gain.setValueAtTime(0.15, now);
+      gain.gain.linearRampToValueAtTime(0.01, now + 0.3);
+      osc.start(now);
+      osc.stop(now + 0.3);
+    }
+  } catch(e) { console.error(e); }
+}
+
 const CONFIG={stoneGold:7500,stoneDwarfCoins:5,ores:[
   {name:'Copper',coins:1,image:'assets/copperbar.png'},
- {name:'Silver',coins:2,image:'assets/silverbar.png'},
- {name:'Gold',coins:5,image:'assets/goldbar.png'},
- {name:'Obsidian',coins:10,image:'assets/obsidianbar.png'},
- {name:'Hell',coins:20,image:'assets/hellstonebar.png'}
+  {name:'Silver',coins:2,image:'assets/silverbar.png'},
+  {name:'Gold',coins:5,image:'assets/goldbar.png'},
+  {name:'Obsidian',coins:10,image:'assets/obsidianbar.png'},
+  {name:'Hell',coins:20,image:'assets/hellstonebar.png'}
 ]};
 let selectedItem=typeof ITEMS !== 'undefined' ? ITEMS[0] : null, current=[], stones=0, history=[], selectedType='All';
+let isEnchanting = false;
 const $=id=>document.getElementById(id);
 function randomItem(list){return list[Math.floor(Math.random()*list.length)]}
 function setResult(cls,big,detail){$('result').className='result '+cls;$('result').innerHTML=`<div><div class="big">${big}</div><div class="detail">${detail}</div></div>`}
 
 function rollResult(available){
  const attribute = randomItem(available);
- 
- // Sorteia um nível válido com base na quantidade real de níveis disponíveis do atributo
  const levelIndex = Math.floor(Math.random() * attribute.levels.length);
  const level = attribute.levels[levelIndex];
-
- // Suporta tanto o formato novo (enchant direto) quanto o modelo antigo se houver
  const finalChance = level.enchant !== undefined ? level.enchant : (level.chance || 0);
  const success = Math.random() * 100 < finalChance;
  
@@ -182,14 +331,16 @@ function rollResult(available){
    attribute,
    value: level.value,
    tier: `T${levelIndex + 1}`,
-   chance: finalChance
+   chance: finalChance,
+   hasChanceCol: !!attribute.hasChanceCol,
+   chanceChc: level.chanceChc
  };
 }
 
 function renderTypes(){
  const types = [...new Set(ITEMS.map(i => i.tipe || i.type).filter(Boolean))];
  let options = `<option value="All">${t('allTypes')}</option>`;
- types.type = types.forEach ? types.forEach(type => { options += `<option value="${type}">${type}</option>`; }) : null;
+ types.forEach(type => { options += `<option value="${type}">${type}</option>`; });
  $('typeSelect').innerHTML = options;
  $('typeSelect').value = selectedType;
 }
@@ -209,7 +360,10 @@ function render(){
  $('itemSubtitle').textContent=`${t('tier')} ${selectedItem.tier} • ${selectedItem.tier} ${selectedItem.tier===1?t('slotsOne'):t('slotsMany')} • ${selectedItem.attributes.length} ${t('possible')}`;
  
  $('slots').innerHTML=Array.from({length:selectedItem.tier},(_,i)=>`<span class="slot ${i<current.length?'filled':''}"></span>`).join('');
- $('attrs').innerHTML=current.length?current.map(a=>`<div class="attr"><span><b>${trAttr(a.name)}</b> · ${a.tier}</span><small>${a.value}</small></div>`).join(''):`<div class="attr empty">${t('none')}</div>`;
+ $('attrs').innerHTML=current.length?current.map(a=>{
+   const iconImg = ATTR_ICONS[a.name] ? `<img src="${ATTR_ICONS[a.name]}" style="width:16px;height:16px;vertical-align:middle;margin-right:5px;">` : '';
+   return `<div class="attr"><span>${iconImg}<b>${trAttr(a.name)}</b> · ${a.tier}</span><small>${a.value}</small></div>`;
+ }).join(''):`<div class="attr empty">${t('none')}</div>`;
  
  const possibleHtml = selectedItem.attributes.map(a => {
    let vals = '';
@@ -218,7 +372,8 @@ function render(){
    } else {
      vals = a.levels.map(l => l.value).join(' / ');
    }
-   return `<div class="p-attr"><span class="p-attr-name">${trAttr(a.name)}</span><span class="p-attr-vals">${vals}</span></div>`;
+   const iconImg = ATTR_ICONS[a.name] ? `<img class="p-attr-icon" src="${ATTR_ICONS[a.name]}" alt="">` : '';
+   return `<div class="p-attr"><div class="p-attr-left">${iconImg}<span class="p-attr-name">${trAttr(a.name)}</span></div><span class="p-attr-vals">${vals}</span></div>`;
  }).join('');
  $('possibleList').innerHTML = possibleHtml;
 
@@ -231,17 +386,159 @@ function render(){
  $('history').innerHTML=history.length?history.slice().reverse().map((h,i)=>h.success?`<div class="row"><span>${interpolate(t('successResult'),{attribute:trAttr(h.attribute.name),value:h.value})} · ${h.tier}</span><span>#${history.length-i}</span></div>`:`<div class="row fail-row"><span>❌ ${language==='en'?'Failed':language==='pl'?'Nieudane':'Falhou'} — ${trAttr(h.attribute.name)} (${h.tier}) (${h.chance}%)</span><span>#${history.length-i}</span></div>`).join(''):`<div class="row"><span>${t('noAttempts')}</span><span>—</span></div>`;
 }
 function renderOres(){ $('ores').innerHTML=CONFIG.ores.map(o=>`<div class="ore-row"><img class="ore-icon" src="${o.image}" alt="${I18N[language].ore[o.name]||o.name}"><span class="ore-name">${I18N[language].ore[o.name]||o.name}</span><span class="ore-coins">${o.coins} DC</span></div>`).join(''); }
+
+// SISTEMA DE ENCHANT COM VELOCIDADE SELECIONÁVEL
 function enchant(){
- if(current.length>=selectedItem.tier||!selectedItem.attributes.length)return;
+ if(isEnchanting || current.length>=selectedItem.tier||!selectedItem.attributes.length)return;
  const available=selectedItem.attributes.filter(a=>!current.some(x=>x.name===a.name));
  if(!available.length)return;
+
+ isEnchanting = true;
  stones++;
  const result=rollResult(available);
- history.push({success:result.success,attribute:result.attribute,value:result.value,tier:result.tier,chance:result.chance});
- if(!result.success){setResult('fail',t('failResult'),interpolate(t('failDetail'),{attribute:trAttr(result.attribute.name),tier:result.tier,chance:result.chance}))}
- else {current.push({name:result.attribute.name,value:result.value,tier:result.tier});setResult('success',interpolate(t('successResult'),{attribute:trAttr(result.attribute.name),value:result.value}),interpolate(t('successDetail'),{tier:result.tier,chance:result.chance}))}
- render();
+ const speedMode = $('speedSelect').value;
+
+ const modal = $('enchantModal');
+ const lineAttr = $('rLineAttr');
+ const lineTier = $('rLineTier');
+ const lineExtra = $('rLineExtra');
+ const lineSuccess = $('rLineSuccess');
+
+ const valAttr = $('rValAttr');
+ const iconAttr = $('rIconAttr');
+ const valTier = $('rValTier');
+ const valExtra = $('rValExtra');
+ const valSuccess = $('rValSuccess');
+
+ // MODO INSTANTÂNEO (Sem animação, direto ao resultado)
+ if(speedMode === 'instant') {
+   history.push({success:result.success,attribute:result.attribute,value:result.value,tier:result.tier,chance:result.chance});
+   if(!result.success){
+     playSound('fail');
+     setResult('fail',t('failResult'),interpolate(t('failDetail'),{attribute:trAttr(result.attribute.name),tier:result.tier,chance:result.chance}));
+   } else {
+     playSound('success');
+     current.push({name:result.attribute.name,value:result.value,tier:result.tier});
+     setResult('success',interpolate(t('successResult'),{attribute:trAttr(result.attribute.name),value:result.value}),interpolate(t('successDetail'),{tier:result.tier,chance:result.chance}));
+   }
+   render();
+   isEnchanting = false;
+   return;
+ }
+
+ // MODOS COM ANIMAÇÃO (1x é mais lento, 2x é o anterior)
+ modal.classList.add('active');
+ [lineAttr, lineTier, lineExtra, lineSuccess].forEach(l => l.className = 'roulette-line');
+
+ if(result.hasChanceCol) { lineExtra.style.display = 'flex'; } else { lineExtra.style.display = 'none'; }
+
+ const baseInterval = speedMode === '1x' ? 140 : 70; // 1x dobra o tempo de cada pulo
+
+ lineAttr.classList.add('active-line');
+ valAttr.textContent = '...';
+ iconAttr.style.display = 'none';
+ valTier.textContent = '---';
+ valExtra.textContent = '---';
+ valSuccess.textContent = '---';
+
+ let counterAttr = 0;
+ const rollAttrInterval = setInterval(() => {
+   counterAttr++;
+   playSound('tick');
+   const dummy = randomItem(selectedItem.attributes);
+   valAttr.textContent = trAttr(dummy.name);
+   if(ATTR_ICONS[dummy.name]) {
+     iconAttr.src = ATTR_ICONS[dummy.name];
+     iconAttr.style.display = 'inline-block';
+   }
+
+   if(counterAttr >= 8) {
+     clearInterval(rollAttrInterval);
+     valAttr.textContent = trAttr(result.attribute.name);
+     if(ATTR_ICONS[result.attribute.name]) {
+       iconAttr.src = ATTR_ICONS[result.attribute.name];
+       iconAttr.style.display = 'inline-block';
+     } else {
+       iconAttr.style.display = 'none';
+     }
+     lineAttr.classList.remove('active-line');
+     
+     // ETAPA 2
+     lineTier.classList.add('active-line');
+     let counterTier = 0;
+     const rollTierInterval = setInterval(() => {
+       counterTier++;
+       playSound('tick');
+       const dummyLvl = randomItem(result.attribute.levels);
+       valTier.textContent = `${dummyLvl.value} (${result.tier.slice(0,1)}...?)`;
+
+       if(counterTier >= 8) {
+         clearInterval(rollTierInterval);
+         valTier.textContent = `${result.value} (${result.tier})`;
+         lineTier.classList.remove('active-line');
+
+         if(result.hasChanceCol) {
+           lineExtra.classList.add('active-line');
+           let counterExtra = 0;
+           const rollExtraInterval = setInterval(() => {
+             counterExtra++;
+             playSound('tick');
+             valExtra.textContent = `+${Math.floor(Math.random()*15)+1}%`;
+
+             if(counterExtra >= 8) {
+               clearInterval(rollExtraInterval);
+               valExtra.textContent = `+${result.chanceChc}%`;
+               lineExtra.classList.remove('active-line');
+               startSuccessRoll();
+             }
+           }, baseInterval);
+         } else {
+           startSuccessRoll();
+         }
+       }
+     }, baseInterval);
+   }
+ }, baseInterval);
+
+ function startSuccessRoll() {
+   lineSuccess.classList.add('active-line');
+   let counterSuccess = 0;
+   const rollSuccessInterval = setInterval(() => {
+     counterSuccess++;
+     playSound('tick');
+     valSuccess.textContent = `${Math.floor(Math.random()*90)+10}%`;
+
+     if(counterSuccess >= 8) {
+       clearInterval(rollSuccessInterval);
+       valSuccess.textContent = `${result.chance}%`;
+       lineSuccess.classList.remove('active-line');
+
+       if(result.success) {
+         lineSuccess.classList.add('success-line');
+         playSound('success');
+       } else {
+         lineSuccess.classList.add('fail-line');
+         playSound('fail');
+       }
+
+       const closeDelay = speedMode === '1x' ? 1200 : 700;
+       setTimeout(() => {
+         modal.classList.remove('active');
+         history.push({success:result.success,attribute:result.attribute,value:result.value,tier:result.tier,chance:result.chance});
+         if(!result.success){
+           setResult('fail',t('failResult'),interpolate(t('failDetail'),{attribute:trAttr(result.attribute.name),tier:result.tier,chance:result.chance}));
+         } else {
+           current.push({name:result.attribute.name,value:result.value,tier:result.tier});
+           setResult('success',interpolate(t('successResult'),{attribute:trAttr(result.attribute.name),value:result.value}),interpolate(t('successDetail'),{tier:result.tier,chance:result.chance}));
+         }
+         render();
+         isEnchanting = false;
+       }, closeDelay);
+     }
+   }, baseInterval);
+ }
 }
+
 function reset(){current=[];stones=0;history=[];setResult('',t('resetResult'),t('resetDetail'));render()}
 function changeItem(){const id=$('itemSelect').value;selectedItem=ITEMS.find(i=>i.id===id)||ITEMS[0];reset()}
 
@@ -275,6 +572,12 @@ Desenvolvido por Macolt`;
    console.error('Erro ao copiar', err);
  });
 }
+
+// TOGGLE DE SOM
+$('soundToggleBtn').onclick = () => {
+  soundEnabled = !soundEnabled;
+  $('soundToggleBtn').textContent = soundEnabled ? '🔊 Som' : '🔇 Mudo';
+};
 
 $('enchant').onclick=enchant;$('reset').onclick=reset;$('shareBtn').onclick=shareItem;$('itemSelect').onchange=changeItem;
 $('typeSelect').onchange=()=>{ selectedType=$('typeSelect').value; renderItems(); changeItem(); };
