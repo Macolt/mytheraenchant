@@ -2540,6 +2540,468 @@ const ITEMS = [
         ]
       }
     ]
+  },
+
+  // --- SHIELDS ---
+  {
+    id: "blessed-shield",
+    name: "Blessed Shield",
+    tier: 5,
+    tipe: "Shields",
+    image: "assets/blessed-shield.png",
+    attributes: [
+      {
+        name: "Arrow Guard",
+        levels: [
+          { value: "+15%", chance: 8 },
+          { value: "+30%", chance: 6 },
+          { value: "+45%", chance: 4 },
+          { value: "+60%", chance: 2 },
+          { value: "+75%", chance: 1 }
+        ]
+      },
+      {
+        name: "Defense",
+        levels: [
+          { value: "+1", chance: 10 },
+          { value: "+2", chance: 8 },
+          { value: "+3", chance: 6 },
+          { value: "+4", chance: 4 },
+          { value: "+5", chance: 2 }
+        ]
+      },
+      {
+        name: "Mitigation",
+        levels: [
+          { value: "+10%", chance: 6 },
+          { value: "+20%", chance: 4 },
+          { value: "+30%", chance: 2 },
+          { value: "+40%", chance: 1 },
+          { value: "+50%", chance: 0.5 }
+        ]
+      },
+      {
+        name: "Protect Elements",
+        levels: [
+          { value: "+1%", chance: 6 },
+          { value: "+2%", chance: 4 },
+          { value: "+3%", chance: 2 },
+          { value: "+4%", chance: 1 },
+          { value: "+5%", chance: 0.5 }
+        ]
+      },
+      {
+        name: "Protect Physical",
+        levels: [
+          { value: "+1%", chance: 6 },
+          { value: "+2%", chance: 4 },
+          { value: "+3%", chance: 2 },
+          { value: "+4%", chance: 1 },
+          { value: "+5%", chance: 0.5 }
+        ]
+      },
+      {
+        name: "Shielding",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 },
+          { value: "+3", chance: 4 },
+          { value: "+4", chance: 2 },
+          { value: "+5", chance: 1 }
+        ]
+      },
+      {
+        name: "Weight",
+        levels: [
+          { value: "-25%", chance: 10 },
+          { value: "-40%", chance: 8 },
+          { value: "-55%", chance: 6 },
+          { value: "-70%", chance: 4 },
+          { value: "-85%", chance: 2 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "tempest-shield",
+    name: "Tempest Shield",
+    tier: 4,
+    tipe: "Shields",
+    image: "assets/tempest-shield.png",
+    attributes: [
+      {
+        name: "Arrow Guard",
+        levels: [
+          { value: "+15%", chance: 8 },
+          { value: "+30%", chance: 6 },
+          { value: "+45%", chance: 4 },
+          { value: "+60%", chance: 2 }
+        ]
+      },
+      {
+        name: "Defense",
+        levels: [
+          { value: "+1", chance: 10 },
+          { value: "+2", chance: 8 },
+          { value: "+3", chance: 6 },
+          { value: "+4", chance: 4 }
+        ]
+      },
+      {
+        name: "Mitigation",
+        levels: [
+          { value: "+10%", chance: 6 },
+          { value: "+20%", chance: 4 },
+          { value: "+30%", chance: 2 },
+          { value: "+40%", chance: 1 }
+        ]
+      },
+      {
+        name: "Protect Energy",
+        levels: [
+          { value: "+1%", chance: 6 },
+          { value: "+2%", chance: 4 },
+          { value: "+3%", chance: 2 },
+          { value: "+4%", chance: 1 }
+        ]
+      },
+      {
+        name: "Shielding",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 },
+          { value: "+3", chance: 4 },
+          { value: "+4", chance: 2 }
+        ]
+      },
+      {
+        name: "Weight",
+        levels: [
+          { value: "-25%", chance: 10 },
+          { value: "-40%", chance: 8 },
+          { value: "-55%", chance: 6 },
+          { value: "-70%", chance: 4 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "mastermind-shield",
+    name: "Mastermind Shield",
+    tier: 4,
+    tipe: "Shields",
+    image: "assets/mastermind-shield.png",
+    attributes: [
+      {
+        name: "Arrow Guard",
+        levels: [
+          { value: "+15%", chance: 8 },
+          { value: "+30%", chance: 6 },
+          { value: "+45%", chance: 4 },
+          { value: "+60%", chance: 2 }
+        ]
+      },
+      {
+        name: "Defense",
+        levels: [
+          { value: "+1", chance: 10 },
+          { value: "+2", chance: 8 },
+          { value: "+3", chance: 6 },
+          { value: "+4", chance: 4 }
+        ]
+      },
+      {
+        name: "Mitigation",
+        levels: [
+          { value: "+10%", chance: 6 },
+          { value: "+20%", chance: 4 },
+          { value: "+30%", chance: 2 },
+          { value: "+40%", chance: 1 }
+        ]
+      },
+      {
+        name: "Protect Mana Drain",
+        levels: [
+          { value: "+1%", chance: 6 },
+          { value: "+2%", chance: 4 },
+          { value: "+3%", chance: 2 },
+          { value: "+4%", chance: 1 }
+        ]
+      },
+      {
+        name: "Protect Physical",
+        levels: [
+          { value: "+1%", chance: 6 },
+          { value: "+2%", chance: 4 },
+          { value: "+3%", chance: 2 },
+          { value: "+4%", chance: 1 }
+        ]
+      },
+      {
+        name: "Shielding",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 },
+          { value: "+3", chance: 4 },
+          { value: "+4", chance: 2 }
+        ]
+      },
+      {
+        name: "Weight",
+        levels: [
+          { value: "-25%", chance: 10 },
+          { value: "-40%", chance: 8 },
+          { value: "-55%", chance: 6 },
+          { value: "-70%", chance: 4 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "great-shield",
+    name: "Great Shield",
+    tier: 4,
+    tipe: "Shields",
+    image: "assets/great-shield.png",
+    attributes: [
+      {
+        name: "Arrow Guard",
+        levels: [
+          { value: "+15%", chance: 8 },
+          { value: "+30%", chance: 6 },
+          { value: "+45%", chance: 4 },
+          { value: "+60%", chance: 2 }
+        ]
+      },
+      {
+        name: "Defense",
+        levels: [
+          { value: "+1", chance: 10 },
+          { value: "+2", chance: 8 },
+          { value: "+3", chance: 6 },
+          { value: "+4", chance: 4 }
+        ]
+      },
+      {
+        name: "Mitigation",
+        levels: [
+          { value: "+10%", chance: 6 },
+          { value: "+20%", chance: 4 },
+          { value: "+30%", chance: 2 },
+          { value: "+40%", chance: 1 }
+        ]
+      },
+      {
+        name: "Protect Fire",
+        levels: [
+          { value: "+1%", chance: 6 },
+          { value: "+2%", chance: 4 },
+          { value: "+3%", chance: 2 },
+          { value: "+4%", chance: 1 }
+        ]
+      },
+      {
+        name: "Protect Physical",
+        levels: [
+          { value: "+1%", chance: 6 },
+          { value: "+2%", chance: 4 },
+          { value: "+3%", chance: 2 },
+          { value: "+4%", chance: 1 }
+        ]
+      },
+      {
+        name: "Shielding",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 },
+          { value: "+3", chance: 4 },
+          { value: "+4", chance: 2 }
+        ]
+      },
+      {
+        name: "Weight",
+        levels: [
+          { value: "-25%", chance: 10 },
+          { value: "-40%", chance: 8 },
+          { value: "-55%", chance: 6 },
+          { value: "-70%", chance: 4 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "vampire-shield",
+    name: "Vampire Shield",
+    tier: 3,
+    tipe: "Shields",
+    image: "assets/vampire-shield.png",
+    attributes: [
+      {
+        name: "Absorb Health",
+        levels: [
+          { value: "+1%", chance: 6 },
+          { value: "+2%", chance: 4 },
+          { value: "+3%", chance: 2 }
+        ]
+      },
+      {
+        name: "Arrow Guard",
+        levels: [
+          { value: "+15%", chance: 8 },
+          { value: "+30%", chance: 6 },
+          { value: "+45%", chance: 4 }
+        ]
+      },
+      {
+        name: "Defense",
+        levels: [
+          { value: "+1", chance: 10 },
+          { value: "+2", chance: 8 },
+          { value: "+3", chance: 6 }
+        ]
+      },
+      {
+        name: "Mitigation",
+        levels: [
+          { value: "+10%", chance: 6 },
+          { value: "+20%", chance: 4 },
+          { value: "+30%", chance: 2 }
+        ]
+      },
+      {
+        name: "Shielding",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 },
+          { value: "+3", chance: 4 }
+        ]
+      },
+      {
+        name: "Weight",
+        levels: [
+          { value: "-25%", chance: 10 },
+          { value: "-40%", chance: 8 },
+          { value: "-55%", chance: 6 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "demon-shield",
+    name: "Demon Shield",
+    tier: 3,
+    tipe: "Shields",
+    image: "assets/demon-shield.png",
+    attributes: [
+      {
+        name: "Absorb Mana",
+        levels: [
+          { value: "+1%", chance: 6 },
+          { value: "+2%", chance: 4 },
+          { value: "+3%", chance: 2 }
+        ]
+      },
+      {
+        name: "Arrow Guard",
+        levels: [
+          { value: "+15%", chance: 8 },
+          { value: "+30%", chance: 6 },
+          { value: "+45%", chance: 4 }
+        ]
+      },
+      {
+        name: "Defense",
+        levels: [
+          { value: "+1", chance: 10 },
+          { value: "+2", chance: 8 },
+          { value: "+3", chance: 6 }
+        ]
+      },
+      {
+        name: "Magic Level",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 },
+          { value: "+3", chance: 4 }
+        ]
+      },
+      {
+        name: "Protect Fire",
+        levels: [
+          { value: "+1%", chance: 6 },
+          { value: "+2%", chance: 4 },
+          { value: "+3%", chance: 2 }
+        ]
+      },
+      {
+        name: "Protect Mana Drain",
+        levels: [
+          { value: "+1%", chance: 6 },
+          { value: "+2%", chance: 4 },
+          { value: "+3%", chance: 2 }
+        ]
+      },
+      {
+        name: "Shielding",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 },
+          { value: "+3", chance: 4 }
+        ]
+      },
+      {
+        name: "Weight",
+        levels: [
+          { value: "-25%", chance: 10 },
+          { value: "-40%", chance: 8 },
+          { value: "-55%", chance: 6 }
+        ]
+      }
+    ]
+  },
+  {
+    id: "beholder-shield",
+    name: "Beholder Shield",
+    tier: 2,
+    tipe: "Shields",
+    image: "assets/beholder-shield.png",
+    attributes: [
+      {
+        name: "Defense",
+        levels: [
+          { value: "+1", chance: 10 },
+          { value: "+2", chance: 8 }
+        ]
+      },
+      {
+        name: "Magic Level",
+        levels: [
+          { value: "+1", chance: 8 },
+          { value: "+2", chance: 6 }
+        ]
+      },
+      {
+        name: "Protect Mana Drain",
+        levels: [
+          { value: "+1%", chance: 6 },
+          { value: "+2%", chance: 4 }
+        ]
+      },
+      {
+        name: "Protect Poison",
+        levels: [
+          { value: "+1%", chance: 6 },
+          { value: "+2%", chance: 4 }
+        ]
+      },
+      {
+        name: "Weight",
+        levels: [
+          { value: "-25%", chance: 10 },
+          { value: "-40%", chance: 8 }
+        ]
+      }
+    ]
   }
 
 ];
