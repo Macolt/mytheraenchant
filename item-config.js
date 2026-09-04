@@ -909,7 +909,7 @@ const ITEMS = [
         ]
       },
       {
-        name: "Perforation",
+        name: "Perfuration",
         levels: [
           { value: "+8%", chance: 10 },
           { value: "+12%", chance: 8 },
@@ -1065,7 +1065,7 @@ const ITEMS = [
         ]
       },
       {
-        name: "Perforation",
+        name: "Perfuration",
         levels: [
           { value: "+4%", chance: 10 },
           { value: "+6%", chance: 8 },
@@ -1123,7 +1123,7 @@ const ITEMS = [
         ]
       },
       {
-        name: "Perforation",
+        name: "Perfuration",
         levels: [
           { value: "+4%", chance: 10 },
           { value: "+6%", chance: 8 },
@@ -1190,7 +1190,7 @@ const ITEMS = [
         ]
       },
       {
-        name: "Perforation",
+        name: "Perfuration",
         levels: [
           { value: "+4%", chance: 10 },
           { value: "+6%", chance: 8 },
@@ -1258,7 +1258,7 @@ const ITEMS = [
         ]
       },
       {
-        name: "Perforation",
+        name: "Perfuration",
         levels: [
           { value: "+8%", chance: 10 },
           { value: "+12%", chance: 8 },
@@ -1325,7 +1325,7 @@ const ITEMS = [
         ]
       },
       {
-        name: "Perforation",
+        name: "Perfuration",
         levels: [
           { value: "+8%", chance: 10 },
           { value: "+12%", chance: 8 },
@@ -1400,7 +1400,7 @@ const ITEMS = [
         ]
       },
       {
-        name: "Perforation",
+        name: "Perfuration",
         levels: [
           { value: "+8%", chance: 10 },
           { value: "+12%", chance: 8 },
@@ -1476,7 +1476,7 @@ const ITEMS = [
         ]
       },
       {
-        name: "Perforation",
+        name: "Perfuration",
         levels: [
           { value: "+8%", chance: 10 },
           { value: "+12%", chance: 8 },
@@ -1543,7 +1543,7 @@ const ITEMS = [
         ]
       },
       {
-        name: "Perforation",
+        name: "Perfuration",
         levels: [
           { value: "+8%", chance: 10 },
           { value: "+12%", chance: 8 },
@@ -1610,7 +1610,7 @@ const ITEMS = [
         ]
       },
       {
-        name: "Perforation",
+        name: "Perfuration",
         levels: [
           { value: "+8%", chance: 10 },
           { value: "+12%", chance: 8 },
@@ -1682,7 +1682,7 @@ const ITEMS = [
         ]
       },
       {
-        name: "Perforation",
+        name: "Perfuration",
         levels: [
           { value: "+8%", chance: 10 },
           { value: "+12%", chance: 8 },
@@ -1760,7 +1760,7 @@ const ITEMS = [
         ]
       },
       {
-        name: "Perforation",
+        name: "Perfuration",
         levels: [
           { value: "+4%", chance: 10 },
           { value: "+6%", chance: 8 },
@@ -2283,7 +2283,7 @@ const ITEMS = [
         ]
       },
       {
-        name: "Perforation",
+        name: "Perfuration",
         levels: [
           { value: "+8%", chance: 10 },
           { value: "+12%", chance: 8 },
